@@ -14,7 +14,7 @@ contract Examples {
         return balance;
     }
 
-    function calculate(uint x,uint y) public view returns(uint){
+    function calculate(uint x,uint y) public pure returns(uint){
         return x*y;
     }
 
