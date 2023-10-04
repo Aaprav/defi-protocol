@@ -1,0 +1,209 @@
+body{
+  background-repeat: no-repeat;
+  background-image: linear-gradient(-225deg, #231557 0%, #44107A 29%, #DF004A 67%, #BBB600 100%);
+}
+
+
+.banner-img{
+  position: relative;
+  display: block;
+  width: 100%;
+}
+
+
+.footer{
+  position: absolute;
+  display: block;
+  bottom: 0;
+  width: 100%;
+}
+.foot-content{
+  display: block;
+  position: relative;
+  text-align: center;
+  font-size: 16px;
+}
+
+.foot-content .cl-1{
+  color: #FF671F;
+
+}
+.foot-content .cl-2{
+  color: #FFFFFF;
+
+}
+.foot-content .cl-3{
+  color: #046A38;
+
+}
+
+/*==============================
+	Timer styles start
+==============================*/
+
+.countdown-timer{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 40vw - 24px);
+  min-height: 120px;
+}
+
+.flip-clock {
+  text-align: center;
+  perspective: 400px;
+  margin: 0 auto;
+  *,
+  *:before,
+  *:after { box-sizing: border-box; }
+}
+
+.flip-clock__piece {
+  display: inline-block;
+  margin: 0 5px;
+}
+
+.flip-clock__slot {
+  font-size: 15px;
+  color: #2CB0EF;
+}
+
+.card-clock {
+  display: block;
+  position: relative;
+  padding-bottom: 50px;
+  font-size: 50px;
+  line-height: 1;
+  overflow: hidden;
+}
+
+.card__top,
+.card__bottom,
+.card__back::before,
+.card__back::after {
+  display: block;
+  height: 50px;
+  color: #FF1361;
+  background: #44107A;
+  padding:  25px 0;
+  border-radius:  15px  15px 0 0;
+  backface-visiblity: hidden;
+  transform-style: preserve-3d;
+  width: 110px;
+  transform: translateZ(0);
+  overflow: hidden;
+}
+
+.card__bottom {
+  color: #DF004A;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  border-top: solid 1px #000;
+  background: #231557;
+  border-radius: 0 0 15px  15px;
+  pointer-events: none;
+  overflow: hidden;
+
+}
+
+.card__bottom::after {
+  display: block;
+  margin-top: -50px;
+}
+
+.card__back::before,
+.card__bottom::after {
+  content: attr(data-value);
+}
+
+.card__back {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  left: 0%;
+  pointer-events: none;
+}
+
+.card__back::before {
+  position: relative;
+  z-index: -1;
+  overflow: hidden;
+}
+
+
+
+.flip .card__back::before {
+  animation: flipTop 0.3s cubic-bezier(.37,.01,.94,.35);
+  animation-fill-mode: both;
+  transform-origin: center bottom;
+}
+
+.flip .card__back .card__bottom {
+  transform-origin: center top;
+  animation-fill-mode: both;
+  animation: flipBottom 0.6s cubic-bezier(.15,.45,.28,1);// 0.3s;
+}
+
+@keyframes flipTop {
+  0% {
+    transform: rotateX(0deg);
+    z-index: 2;
+  }
+  0%, 99% {
+    opacity: 0.99;
+  }
+  100% {
+    transform: rotateX(-90deg);
+    opacity: 0;
+  }
+}
+
+@keyframes flipBottom {
+  0%, 50% {
+    z-index: -1;
+    transform: rotateX(90deg);
+    opacity: 0;
+  }
+  51% {
+    opacity: 0.99;
+  }
+  100% {
+    opacity: 0.99;
+    transform: rotateX(0deg);
+    z-index: 5;
+  }
+}
+
+@media(max-width : 768px) {
+  .countdown-timer{
+    height: calc(100vh - 40vw - 48px);
+    min-height: 100px;
+  }
+
+  .card-clock {
+    padding-bottom: 40px;
+    font-size: 40px;
+  }
+  .card__top,
+  .card__bottom,
+  .card__back::before,
+  .card__back::after {
+    height: 40px;
+    padding:  20px 0;
+    border-radius:  10px  10px 0 0;
+    width: 70px;
+  }
+  .card__bottom::after {
+    margin-top: -40px;
+  }
+  .card__bottom {
+    border-radius: 0 0 10px  10px;
+  }
+}
+
+/*==============================
+	Timer styles end
+==============================*/
