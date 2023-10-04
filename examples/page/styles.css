@@ -94,6 +94,8 @@ body{
   width: 110px;
   transform: translateZ(0);
   overflow: hidden;
+  pointer-events: none;
+
 }
 
 .card__bottom {
@@ -207,3 +209,74 @@ body{
 /*==============================
 	Timer styles end
 ==============================*/
+
+
+
+
+
+
+/*==============================
+	css for user.html
+==============================*/
+
+
+.input-area{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 40vw - 24px);
+  min-height: 120px;
+  width: 50%;
+  margin: 0 auto;
+}
+
+
+input{
+  display: block;
+  position: relative;
+  background: transparent;
+  border: solid 2px #231557;
+  color: #fff;
+  height: 50px;
+  padding: 0 10px;
+  width: 100%;
+  border-radius: 8px 0 0 8px;
+  font-size: 20px;
+  box-shadow: 0 0 8px 4px #DF004A,inset 0 0 4px #000;
+}
+input::placeholder{
+  color: #ccc;
+}
+input:hover{
+  border-color: #fff;
+}
+input:focus{
+  border-color: #44107A;
+}
+button{
+  display: block;
+  position: relative;
+  background: #231557;
+  /* background: #44107A; */
+  color: #fff;
+  width: 100%;
+  padding: 0 10px;
+  height: 50px;
+  border-radius: 0 8px 8px 0;
+  font-size: 20px;
+  transition: all .4s;
+  box-shadow: 0 0 8px 4px #DF004A;
+}
+button:hover{
+  background: #44107A;
+  font-size: 24px;
+}
+
+@media(max-width : 768px) {
+  .input-area{
+    height: calc(100vh - 40vw - 48px);
+    min-height: 100px;
+  }
+}
