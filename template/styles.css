@@ -1,0 +1,79 @@
+body{
+  background: #222227;
+}
+
+
+
+
+h1.title-head{
+  display: block;
+  position: relative;
+  color: #ccc;
+  text-align: center;
+  /* https://www.w3schools.com/cssref/pr_padding.php */
+  padding-bottom: 25px;
+  /* https://www.w3schools.com/cssref/pr_margin.php */
+  margin: 25px 0;
+  border-bottom: solid 1px #888;
+  text-transform: uppercase;
+
+  /* font: font-weight font-size/line-height font-family; */
+  font: 700 50px/50px 'Gabaritos', sans-serif;
+}
+
+
+.fonts-para {
+  display: block;
+  position: relative;
+  color: #fff;
+  text-align: center;
+  font: 400 24px/30px sans-serif;
+}
+.fonts-para.font-1{
+  font-family: 'Gabarito', sans-serif;
+}
+.fonts-para.font-2{
+  font-size: 25px;
+  font-family: 'Gabarito-500', sans-serif;
+}
+.fonts-para.font-3{
+  font-size: 26px;
+  font-family: 'Gabarito-600', sans-serif;
+}
+.fonts-para.font-4{
+  font-size: 27px;
+  font-family: 'Gabarito-700', sans-serif;
+}
+.fonts-para.font-5{
+  font-size: 28px;
+  font-family: 'Gabarito-800', sans-serif;
+}
+.fonts-para.font-6{
+  font-size: 29px;
+  font-family: 'Gabarito-900', sans-serif;
+}
+
+.fonts-para.font-7{
+  font-family: 'Young Serif', sans-serif;
+}
+.fonts-para.font-8{
+  font-family: 'Tilt Neon', sans-serif;
+}
+.fonts-para.font-9{
+  font-family: 'Tilt Neon-500', sans-serif;
+}
+.fonts-para.font-10{
+  font-family: 'Roboto Mono', sans-serif;
+}
+.fonts-para.font-11{
+  font-family: 'Roboto Mono-500', sans-serif;
+}
+
+.button{
+  display: block;
+  position: relative;
+  color: #ccc;
+  text-align: center;
+  font-size: 24px;
+
+}

@@ -1,0 +1,61 @@
+@font-face {
+  font-family: 'Gabarito';
+  font-weight: 400;
+  src: url("fonts/Gabarito-Regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: 'Gabarito-500';
+  font-weight: 500;
+  src: url("fonts/Gabarito-Medium.ttf") format("truetype");
+}
+@font-face {
+  font-family: 'Gabarito-600';
+  font-weight: 600;
+  src: url("fonts/Gabarito-SemiBold.ttf") format("truetype");
+}
+@font-face {
+  font-family: 'Gabarito-700';
+  font-weight: 700;
+  src: url("fonts/Gabarito-Bold.ttf") format("truetype");
+}
+@font-face {
+  font-family: 'Gabarito-800';
+  font-weight: 800;
+  src: url("fonts/Gabarito-ExtraBold.ttf") format("truetype");
+}
+@font-face {
+  font-family: 'Gabarito-900';
+  font-weight: 900;
+  src: url("fonts/Gabarito-Black.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: 'Young Serif';
+  src: url("fonts/YoungSerif-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: 'Tilt Neon';
+  src: url("fonts/TiltNeon-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: 'Roboto Mono';
+  font-weight: 400;
+  src: url("fonts/RobotoMono-Regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: 'Roboto Mono-500';
+  font-weight: 500;
+  src: url("fonts/RobotoMono-Medium.ttf") format("truetype");
+}
+@font-face {
+  font-family: 'IBM Plex Sans';
+  font-weight: 400;
+  src: url("fonts/IBMPlexSans-Regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: 'IBM Plex Sans-500';
+  font-weight: 500;
+  src: url("fonts/IBMPlexSans-Medium.ttf") format("truetype");
+}
