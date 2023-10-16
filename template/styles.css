@@ -1,5 +1,7 @@
 body{
   background: #222227;
+  box-sizing: border-box;
+
 }
 
 
@@ -18,9 +20,203 @@ h1.title-head{
   text-transform: uppercase;
 
   /* font: font-weight font-size/line-height font-family; */
-  font: 700 50px/50px 'Gabaritos', sans-serif;
+  font: 700 50px/50px 'Open Sans-700', sans-serif;
 }
 
+
+/*******************************
+ *     Button examoles         *
+ *******************************/
+
+.button{
+  --radius: 8px;
+  --color:  #000;
+  --bg:  #a2cdff;
+  --duration: .4s;
+
+  position: relative;
+  display: flex;
+  flex-direction:row;
+  justify-content:center;
+  align-items:center;
+  user-select: none;
+  -webkit-user-select: none;
+  cursor: pointer;
+  color: var(--color);
+  background-color: var(--bg);
+  /* border: 1px solid #759ae1; */
+  border-radius: var(--radius);
+  font: 400 22px/25px 'Open Sans', sans-serif;
+  transition: var(--duration) ease;
+  transition-property: color, background-color, border-color, box-shadow;
+
+  padding: 15px 30px;
+  outline: none;
+  border:none;
+}
+.button:hover {
+  --bg: #F3F4F6;
+}
+.button:focus {
+  outline: none;
+}
+
+.button.button-1{
+  --bg:  #39FF14;
+  --radius : 0;
+  --duration: .15s;
+  --delay: .15s;
+  transition:
+    border-top-left-radius var(--duration) var(--delay) ease-out,
+    border-top-right-radius var(--duration) calc(var(--delay) * 2) ease-out,
+    border-bottom-right-radius var(--duration) calc(var(--delay) * 3) ease-out,
+    border-bottom-left-radius var(--duration) calc(var(--delay) * 4) ease-out,
+    background calc(var(--duration) * 4) steps(4, jump-end),
+    color calc(var(--duration) * 4), border-color calc(var(--duration) * 4), box-shadow calc(var(--duration) * 4);
+}
+.button.button-1:hover,
+.button.button-1:focus {
+  --radius : 16px;
+  --bg:  #fff;
+}
+
+
+.button.button-2{
+  --bg:  #E95A49;
+  --color:  #fff;
+  --radius: 16px;
+  --duration: .15s;
+  --delay: .15s;
+  transition:
+    border-top-left-radius var(--duration) var(--delay) ease-out,
+    border-top-right-radius var(--duration) calc(var(--delay) * 2) ease-out,
+    border-bottom-right-radius var(--duration) calc(var(--delay) * 3) ease-out,
+    border-bottom-left-radius var(--duration) calc(var(--delay) * 4) ease-out,
+    background calc(var(--duration) * 4) steps(4, jump-end),
+    color calc(var(--duration) * 4), border-color calc(var(--duration) * 4), box-shadow calc(var(--duration) * 4);
+}
+.button.button-2:hover,
+.button.button-2:focus {
+  --radius : 0;
+  --color:  #000;
+  --bg:  #fff;
+}
+
+
+.button.button-3 {
+  --bg:  #229091;
+  --color:  #fff;
+  --_g: linear-gradient(var(--bg) 0 0) no-repeat;
+  box-shadow: 0 0 0 4px inset var(--bg);
+  background:
+    var(--_g) calc(var(--_p,0%) - 100%) 0%,
+    var(--_g) calc(200% - var(--_p,0%)) 0%,
+    var(--_g) calc(var(--_p,0%) - 100%) 100%,
+    var(--_g) calc(200% - var(--_p,0%)) 100%;
+  background-size: 50.5% calc(var(--_p,0%)/2 + .5%);
+  transition: background-size .4s, background-position 0s .4s,color;
+}
+.button.button-3:hover,
+.button.button-3:focus {
+  --_p: 100%;
+  transition: background-position .4s, background-size 0s;
+}
+
+.button.button-4{
+  --radius : 0;
+  --clr : var(--bg);
+  --color:  #fff;
+}
+.button.button-4:hover,
+.button.button-4:focus{
+  --bg:  #fff;
+}
+.button.button-4::before {
+  content: "";
+  position: absolute;
+  inset: 2px;
+  background: #272822;
+}
+
+.button.button-4 span {
+  position: relative;
+  z-index: 1;
+}
+.button.button-4 i {
+  position: absolute;
+  inset: 0;
+  display: block;
+}
+
+.button.button-4 i::before {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 6px;
+  right: 10px;
+  top: -2px;
+  border: 2px solid var(--clr);
+  background: #272822;
+  transition: 0.2s;
+}
+.button.button-4:hover i::before {
+  width: 25px;
+  right: calc(100% - 35px);
+}
+
+.button.button-4 i::after {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 6px;
+  left: 10px;
+  bottom: -2px;
+  border: 2px solid var(--clr);
+  background: #272822;
+  transition: 0.2s;
+}
+.button.button-4:hover i::after {
+  width: 25px;
+  left: calc(100% - 35px);
+}
+
+
+
+
+
+
+
+
+.button.button-5{
+  --bg:  #0FF0FC;
+
+}
+.button.button-5:hover,
+.button.button-5:focus{
+  --bg:  #fff;
+
+}
+
+.button.button-6{
+  --bg:  #8A2BE2;
+
+}
+.button.button-6:hover,
+.button.button-6:focus{
+  --bg:  #fff;
+
+}
+
+
+.button.sm-btn{
+
+}
+.button.full-btn{
+  /* width: 100%; */
+}
+/*******************************
+ *       Font examoles         *
+ *******************************/
 
 .fonts-para {
   display: block;
@@ -69,11 +265,24 @@ h1.title-head{
   font-family: 'Roboto Mono-500', sans-serif;
 }
 
-.button{
-  display: block;
-  position: relative;
-  color: #ccc;
-  text-align: center;
-  font-size: 24px;
-
+.fonts-para.font-12{
+  font-family: 'Open Sans', sans-serif;
+}
+.fonts-para.font-13{
+  font-family: 'Open Sans-500', sans-serif;
+}
+.fonts-para.font-14{
+  font-family: 'Open Sans-600', sans-serif;
+}
+.fonts-para.font-15{
+  font-family: 'Open Sans-700', sans-serif;
+}
+.fonts-para.font-16{
+  font-family: 'Open Sans-800', sans-serif;
+}
+.fonts-para.font-17{
+  font-family: 'Poppins', sans-serif;
+}
+.fonts-para.font-18{
+  font-family: 'Poppins-500', sans-serif;
 }

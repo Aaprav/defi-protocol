@@ -49,6 +49,7 @@
   font-weight: 500;
   src: url("fonts/RobotoMono-Medium.ttf") format("truetype");
 }
+
 @font-face {
   font-family: 'IBM Plex Sans';
   font-weight: 400;
@@ -58,4 +59,43 @@
   font-family: 'IBM Plex Sans-500';
   font-weight: 500;
   src: url("fonts/IBMPlexSans-Medium.ttf") format("truetype");
+}
+
+
+@font-face {
+  font-family: 'Open Sans';
+  font-weight: 400;
+  src: url("fonts/OpenSans-Regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: 'Open Sans-500';
+  font-weight: 500;
+  src: url("fonts/OpenSans-Medium.ttf") format("truetype");
+}
+@font-face {
+  font-family: 'Open Sans-600';
+  font-weight: 600;
+  src: url("fonts/OpenSans-SemiBold.ttf") format("truetype");
+}
+@font-face {
+  font-family: 'Open Sans-700';
+  font-weight: 700;
+  src: url("fonts/OpenSans-Bold.ttf") format("truetype");
+}
+@font-face {
+  font-family: 'Open Sans-800';
+  font-weight: 800;
+  src: url("fonts/OpenSans-ExtraBold.ttf") format("truetype");
+}
+
+
+@font-face {
+  font-family: 'Poppins';
+  font-weight: 400;
+  src: url("fonts/Poppins-Regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: 'Poppins-500';
+  font-weight: 500;
+  src: url("fonts/Poppins-Medium.ttf") format("truetype");
 }
