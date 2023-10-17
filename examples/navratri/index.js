@@ -189,9 +189,9 @@ function Clock(countdown,callback) {
   setTimeout(updateClock,500);
 }
 
-var deadline = new Date(1697308200000);
-var c = new Clock(deadline, function(){ alert('countdown complete') });
-$(".countdown-timer").append(c.el);
+// var deadline = new Date(1697308200000);
+// var c = new Clock(deadline, function(){ alert('countdown complete') });
+// $(".countdown-timer").append(c.el);
 
 
 

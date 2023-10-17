@@ -124,10 +124,10 @@ h1.title-head{
 
 .button.button-4{
   --radius : 0;
+  --bg:  #ff993a;
   --clr : var(--bg);
   --color:  #fff;
 }
-.button.button-4:hover,
 .button.button-4:focus{
   --bg:  #fff;
 }
@@ -148,7 +148,7 @@ h1.title-head{
   display: block;
 }
 
-.button.button-4 i::before {
+.button.button-4 i::before,.button.button-4 i::after {
   content: "";
   position: absolute;
   width: 20px;
@@ -157,23 +157,18 @@ h1.title-head{
   top: -2px;
   border: 2px solid var(--clr);
   background: #272822;
-  transition: 0.2s;
+  transition: all var(--duration);
 }
-.button.button-4:hover i::before {
-  width: 25px;
-  right: calc(100% - 35px);
-}
-
 .button.button-4 i::after {
-  content: "";
-  position: absolute;
-  width: 20px;
-  height: 6px;
   left: 10px;
   bottom: -2px;
-  border: 2px solid var(--clr);
-  background: #272822;
-  transition: 0.2s;
+  right:initial;
+  top:initial;
+}
+
+.button.button-4:hover i::before,.button.button-4:hover i::after {
+  width: 25px;
+  right: calc(100% - 35px);
 }
 .button.button-4:hover i::after {
   width: 25px;
@@ -183,30 +178,108 @@ h1.title-head{
 
 
 
-
-
-
-
 .button.button-5{
   --bg:  #0FF0FC;
-
+  --radius : 0;
+  --clr : var(--bg);
+  --color:  #fff;
+  --size: 5px;
 }
-.button.button-5:hover,
 .button.button-5:focus{
   --bg:  #fff;
-
 }
+.button.button-5::before {
+  content: "";
+  position: absolute;
+  inset: 2px;
+  background: #272822;
+}
+
+.button.button-5 span {
+  position: relative;
+  z-index: 1;
+}
+.button.button-5 i {
+  position: absolute;
+  inset: 0;
+  display: block;
+}
+
+.button.button-5 i::before,.button.button-5 i::after {
+  content: "";
+  position: absolute;
+  width: var(--size);
+  height: var(--size);
+  right: 0;
+  top: 0;
+  background: var(--clr);
+  transition: all var(--duration);
+}
+.button.button-5 i::after {
+  left: 0;
+  bottom: 0;
+  right:initial;
+  top:initial;
+}
+
+.button.button-5 i:nth-child(2)::before {
+  bottom: 0;
+  top:initial;
+}
+.button.button-5 i:nth-child(2)::after {
+  top: 0;
+  bottom:initial;
+}
+
+.button.button-5:hover i::before,
+.button.button-5:hover i::after {
+  --size : 3px;
+  width: 100%;
+}
+
+.button.button-5:hover i:nth-child(2)::before,
+.button.button-5:hover i:nth-child(2)::after{
+  width:var(--size);
+  height: 100%;
+}
+
+
 
 .button.button-6{
-  --bg:  #8A2BE2;
-
+  --bg:  #ffe913;
+  --size : 5px;
 }
-.button.button-6:hover,
 .button.button-6:focus{
   --bg:  #fff;
-
+  --color: #ffe913;
+}
+.button.button-6:hover i::before,.button.button-6:hover i::after {
+  --size : 50%;
+  width: var(--size);
+}
+.button.button-6:hover i:nth-child(2)::before,
+.button.button-6:hover i:nth-child(2)::after{
+  height:var(--size);
 }
 
+.button.button-7{
+  --bg:  #ff052e;
+  --size : 50%;
+  /* --color: #000; */
+}
+.button.button-7:focus{
+  --bg:  #fff;
+  --color: #ff052e;
+}
+
+.button.button-7:hover i::before,.button.button-7:hover i::after {
+  --size : 5px;
+  width: var(--size);
+}
+.button.button-7:hover i:nth-child(2)::before,
+.button.button-7:hover i:nth-child(2)::after{
+  height:var(--size);
+}
 
 .button.sm-btn{
 
