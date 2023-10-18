@@ -281,6 +281,86 @@ h1.title-head{
   height:var(--size);
 }
 
+
+
+@property --angle {
+	syntax: '<angle>';
+	initial-value: 0deg;
+	inherits: false;
+}
+@-webkit-keyframes rotate-angle {
+	from {--angle: 0deg;}
+	to {--angle: 360deg;}
+}
+@keyframes rotate-angle {
+	from {--angle: 0deg;}
+	to {--angle: 360deg;}
+}
+
+.button.button-8{
+  --pad : 3px;
+  --c1 : #DC2424;
+  --c2 : #4A569D;
+  --bg:  --c1;
+  --color:  #fff;
+  background-image: linear-gradient(135deg, var(--c1), var(--c2)) ;
+  &::after {
+    position: absolute;
+    top: var(--pad);
+    left: var(--pad);
+    bottom: var(--pad);
+    right: var(--pad);
+    background: #222227;
+    content: '';
+    z-index: 0;
+    border-radius: calc(var(--radius) - 1px);
+  }
+}
+.button.button-8:hover{
+  background-image: linear-gradient(-135deg, var(--c1), var(--c2)) ;
+}
+.button.button-8 span{
+  position: relative;
+  z-index: 1;
+}
+.button.button-9{
+  --pad : 3px;
+  --c1 : #c21500;
+  --c2 : #ffc500;
+  --bg:  --c1;
+  --color:  #fff;
+
+  background-image: linear-gradient(135deg, var(--c1), var(--c2)) ;
+  &::after {
+    position: absolute;
+    top: var(--pad);
+    left: var(--pad);
+    bottom: var(--pad);
+    right: var(--pad);
+    background: #222227;
+    content: '';
+    z-index: 0;
+    border-radius: calc(var(--radius) - 1px);
+  }
+
+  @supports (background:paint(something)){
+    background-image: -webkit-gradient(linear, left top, left bottom, from(var(--angle)), color-stop($c1), to($c2));
+    background-image: -webkit-linear-gradient(var(--angle), var(--c1), var(--c2)) ;
+    background-image: -o-linear-gradient(var(--angle), var(--c1), var(--c2)) ;
+    background-image: linear-gradient(var(--angle), var(--c1), var(--c2)) ;
+		-webkit-animation: 3s rotate-angle linear infinite normal;
+		animation: 3s rotate-angle linear infinite normal;
+	}
+}
+
+.button.button-9:hover{
+  animation-direction: reverse;
+}
+.button.button-9 span{
+  position: relative;
+  z-index: 1;
+}
+
 .button.sm-btn{
 
 }
