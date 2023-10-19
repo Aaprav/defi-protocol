@@ -30,8 +30,8 @@ h1.title-head{
 
 .button{
   --radius: 8px;
-  --color:  #000;
-  --bg:  #a2cdff;
+  --color:  #fff;
+  --bg:  #32CCBC;
   --duration: .4s;
 
   position: relative;
@@ -55,14 +55,14 @@ h1.title-head{
   border:none;
 }
 .button:hover {
-  --bg: #F3F4F6;
+  --bg: #90F7EC;
+  --color:  #222;
 }
 .button:focus {
   outline: none;
 }
 
 .button.button-1{
-  --bg:  #39FF14;
   --radius : 0;
   --duration: .15s;
   --delay: .15s;
@@ -77,13 +77,11 @@ h1.title-head{
 .button.button-1:hover,
 .button.button-1:focus {
   --radius : 16px;
-  --bg:  #fff;
 }
 
 
 .button.button-2{
-  --bg:  #E95A49;
-  --color:  #fff;
+  --bg:  #EA5455;
   --radius: 16px;
   --duration: .15s;
   --delay: .15s;
@@ -98,14 +96,24 @@ h1.title-head{
 .button.button-2:hover,
 .button.button-2:focus {
   --radius : 0;
-  --color:  #000;
-  --bg:  #fff;
+  --bg:  #FEB692;
 }
 
 
-.button.button-3 {
-  --bg:  #229091;
-  --color:  #fff;
+.button.button-3{
+  --radius: 30px;
+  --bg:  #E2B0FF;
+  --bg2:  #9F44D3;
+  background-image: linear-gradient(45deg, var(--bg), var(--bg2)) ;
+}
+.button.button-3:hover,
+.button.button-3:focus {
+  --bg2:  #E2B0FF;
+  --bg:  #9F44D3;
+}
+
+.button.button-4 {
+  --bg:  #FCCF31;
   --_g: linear-gradient(var(--bg) 0 0) no-repeat;
   box-shadow: 0 0 0 4px inset var(--bg);
   background:
@@ -116,83 +124,28 @@ h1.title-head{
   background-size: 50.5% calc(var(--_p,0%)/2 + .5%);
   transition: background-size .4s, background-position 0s .4s,color;
 }
-.button.button-3:hover,
-.button.button-3:focus {
+.button.button-4:hover,
+.button.button-4:focus {
   --_p: 100%;
+  --bg:  #F55555;
+  --color:  #fff;
   transition: background-position .4s, background-size 0s;
 }
 
-.button.button-4{
-  --radius : 0;
-  --bg:  #ff993a;
-  --clr : var(--bg);
-  --color:  #fff;
-}
-.button.button-4:focus{
-  --bg:  #fff;
-}
-.button.button-4::before {
-  content: "";
-  position: absolute;
-  inset: 2px;
-  background: #272822;
-}
-
-.button.button-4 span {
-  position: relative;
-  z-index: 1;
-}
-.button.button-4 i {
-  position: absolute;
-  inset: 0;
-  display: block;
-}
-
-.button.button-4 i::before,.button.button-4 i::after {
-  content: "";
-  position: absolute;
-  width: 20px;
-  height: 6px;
-  right: 10px;
-  top: -2px;
-  border: 2px solid var(--clr);
-  background: #272822;
-  transition: all var(--duration);
-}
-.button.button-4 i::after {
-  left: 10px;
-  bottom: -2px;
-  right:initial;
-  top:initial;
-}
-
-.button.button-4:hover i::before,.button.button-4:hover i::after {
-  width: 25px;
-  right: calc(100% - 35px);
-}
-.button.button-4:hover i::after {
-  width: 25px;
-  left: calc(100% - 35px);
-}
-
-
-
-
 .button.button-5{
-  --bg:  #0FF0FC;
   --radius : 0;
-  --clr : var(--bg);
-  --color:  #fff;
-  --size: 5px;
+  --bg: #FCB58F;
+  --bg2: #FB955D;
+
 }
-.button.button-5:focus{
-  --bg:  #fff;
+.button.button-5:hover {
+  --color:  #fff;
 }
 .button.button-5::before {
   content: "";
   position: absolute;
   inset: 2px;
-  background: #272822;
+  background: #222227;
 }
 
 .button.button-5 span {
@@ -208,6 +161,63 @@ h1.title-head{
 .button.button-5 i::before,.button.button-5 i::after {
   content: "";
   position: absolute;
+  width: 20px;
+  height: 6px;
+  right: 10px;
+  top: -2px;
+  border: 2px solid var(--bg2);
+  background: #222227;
+  transition: all var(--duration);
+}
+.button.button-5 i::after {
+  left: 10px;
+  bottom: -2px;
+  right:initial;
+  top:initial;
+}
+
+.button.button-5:hover i::before,.button.button-5:hover i::after {
+  width: 25px;
+  right: calc(100% - 35px);
+}
+.button.button-5:hover i::after {
+  width: 25px;
+  left: calc(100% - 35px);
+}
+
+
+
+
+.button.button-6{
+  --bg:  #0FF0FC;
+  --radius : 0;
+  --clr : var(--bg);
+  --color:  #fff;
+  --size: 5px;
+}
+.button.button-6:focus{
+  --bg:  #fff;
+}
+.button.button-6::before {
+  content: "";
+  position: absolute;
+  inset: 2px;
+  background: #272822;
+}
+
+.button.button-6 span {
+  position: relative;
+  z-index: 1;
+}
+.button.button-6 i {
+  position: absolute;
+  inset: 0;
+  display: block;
+}
+
+.button.button-6 i::before,.button.button-6 i::after {
+  content: "";
+  position: absolute;
   width: var(--size);
   height: var(--size);
   right: 0;
@@ -215,69 +225,69 @@ h1.title-head{
   background: var(--clr);
   transition: all var(--duration);
 }
-.button.button-5 i::after {
+.button.button-6 i::after {
   left: 0;
   bottom: 0;
   right:initial;
   top:initial;
 }
 
-.button.button-5 i:nth-child(2)::before {
+.button.button-6 i:nth-child(2)::before {
   bottom: 0;
   top:initial;
 }
-.button.button-5 i:nth-child(2)::after {
+.button.button-6 i:nth-child(2)::after {
   top: 0;
   bottom:initial;
 }
 
-.button.button-5:hover i::before,
-.button.button-5:hover i::after {
+.button.button-6:hover i::before,
+.button.button-6:hover i::after {
   --size : 3px;
   width: 100%;
 }
 
-.button.button-5:hover i:nth-child(2)::before,
-.button.button-5:hover i:nth-child(2)::after{
+.button.button-6:hover i:nth-child(2)::before,
+.button.button-6:hover i:nth-child(2)::after{
   width:var(--size);
   height: 100%;
 }
 
 
 
-.button.button-6{
+.button.button-7{
   --bg:  #ffe913;
   --size : 5px;
 }
-.button.button-6:focus{
+.button.button-7:focus{
   --bg:  #fff;
   --color: #ffe913;
 }
-.button.button-6:hover i::before,.button.button-6:hover i::after {
-  --size : 50%;
-  width: var(--size);
-}
-.button.button-6:hover i:nth-child(2)::before,
-.button.button-6:hover i:nth-child(2)::after{
-  height:var(--size);
-}
-
-.button.button-7{
-  --bg:  #ff052e;
-  --size : 50%;
-  /* --color: #000; */
-}
-.button.button-7:focus{
-  --bg:  #fff;
-  --color: #ff052e;
-}
-
 .button.button-7:hover i::before,.button.button-7:hover i::after {
-  --size : 5px;
+  --size : 50%;
   width: var(--size);
 }
 .button.button-7:hover i:nth-child(2)::before,
 .button.button-7:hover i:nth-child(2)::after{
+  height:var(--size);
+}
+
+.button.button-8{
+  --bg:  #ff052e;
+  --size : 50%;
+  /* --color: #000; */
+}
+.button.button-8:focus{
+  --bg:  #fff;
+  --color: #ff052e;
+}
+
+.button.button-8:hover i::before,.button.button-8:hover i::after {
+  --size : 5px;
+  width: var(--size);
+}
+.button.button-8:hover i:nth-child(2)::before,
+.button.button-8:hover i:nth-child(2)::after{
   height:var(--size);
 }
 
@@ -297,7 +307,7 @@ h1.title-head{
 	to {--angle: 360deg;}
 }
 
-.button.button-8{
+.button.button-9{
   --pad : 3px;
   --c1 : #DC2424;
   --c2 : #4A569D;
@@ -316,14 +326,14 @@ h1.title-head{
     border-radius: calc(var(--radius) - 1px);
   }
 }
-.button.button-8:hover{
+.button.button-9:hover{
   background-image: linear-gradient(-135deg, var(--c1), var(--c2)) ;
 }
-.button.button-8 span{
+.button.button-9 span{
   position: relative;
   z-index: 1;
 }
-.button.button-9{
+.button.button-10{
   --pad : 3px;
   --c1 : #c21500;
   --c2 : #ffc500;
@@ -344,23 +354,66 @@ h1.title-head{
   }
 
   @supports (background:paint(something)){
-    background-image: -webkit-gradient(linear, left top, left bottom, from(var(--angle)), color-stop($c1), to($c2));
+    background-image: -webkit-gradient(linear, left top, left bottom, from(var(--angle)), color-stop(var(--c1)), to(var(--c2)));
     background-image: -webkit-linear-gradient(var(--angle), var(--c1), var(--c2)) ;
     background-image: -o-linear-gradient(var(--angle), var(--c1), var(--c2)) ;
     background-image: linear-gradient(var(--angle), var(--c1), var(--c2)) ;
-		-webkit-animation: 3s rotate-angle linear infinite normal;
-		animation: 3s rotate-angle linear infinite normal;
+		-webkit-animation: 4s rotate-angle linear infinite normal;
+		animation: 4s rotate-angle linear infinite normal;
 	}
 }
 
-.button.button-9:hover{
+.button.button-10:hover{
   animation-direction: reverse;
 }
-.button.button-9 span{
+.button.button-10 span{
   position: relative;
   z-index: 1;
 }
 
+
+.button.button-11{
+  --c1 : #6441A5;
+  --c2 : #2a0845;
+}
+
+.button.button-11 span{
+  --c3 : #00C9FF;
+  --c4 : #fff;
+  font-family: 'Gabarito-500';
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+
+  background: var(--c1);
+  background-image: linear-gradient(135deg,var(--c3), var(--c4));
+
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none; /* Standard syntax */
+
+  @supports (background:paint(something)){
+    background-image: -webkit-gradient(linear, left top, left bottom, from(var(--angle)), color-stop(var(--c3)), to(var(--c4)));
+    background-image: -webkit-linear-gradient(var(--angle), var(--c3), var(--c4)) ;
+    background-image: -o-linear-gradient(var(--angle), var(--c3), var(--c4)) ;
+    background-image: linear-gradient(var(--angle), var(--c3), var(--c4)) ;
+		-webkit-animation: 4s rotate-angle linear infinite normal;
+		animation: 4s rotate-angle linear infinite normal;
+  }
+}
+
+.button.button-12{
+  --c1 : #EEAD92;
+  --c2 : #6018DC;
+  --radius : 30px;
+}
+.button.button-12 span{
+  --c3 : #EEAD92;
+  --c4 : #6018DC;
+ }
+
+ 
 .button.sm-btn{
 
 }
