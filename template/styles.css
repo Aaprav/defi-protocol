@@ -449,36 +449,53 @@ h1.title-head{
    --br-width: 2px;
    --color:  #fff;
    --border-color:  #32CCBC;
+   --bg : #222227;
    --duration: .4s;
    --width: 100%;
 
    position: relative;
-   display: block;
-   color: var(--color);
-   background:transparent;
+   display: flex;
+   flex-direction:row;
+   justify-content:center;
+   align-items:center;
    border:solid var(--br-width) var(--border-color);
    border-radius: var(--radius);
-   font: 400 18px/22px 'Roboto Mono', sans-serif;
    transition: var(--duration) ease;
    transition-property: color, border-color, box-shadow;
-   outline:none;
-   padding: 10px 15px;
-   width: var(--width);
+   width: 100%;
+   overflow:hidden;
  }
  .input:hover {
    --border-color: #90F7EC;
  }
- .input::placeholder{
-   color: #ccc;
+
+ .input input{
+   position: relative;
+   display:block;
+   outline:none;
+   background: var(--bg);
+   width: var(--width);
+   border: none;
+   color: var(--color);
+   font: 400 18px/22px 'Roboto Mono', sans-serif;
+   padding: 10px 15px;
+   border-radius: calc(var(--radius) - 1px);
+
+   &::placeholder{
+     color: #ccc;
+   }
+   /* .input input */
+   &::-webkit-outer-spin-button,
+   &::-webkit-inner-spin-button {
+     -webkit-appearance: none;
+     margin: 0;
+   }
+   &[type=number] {
+     -moz-appearance: textfield;
+   }
  }
- .input::-webkit-outer-spin-button,
- .input::-webkit-inner-spin-button {
-   -webkit-appearance: none;
-   margin: 0;
- }
- .input[type=number] {
-   -moz-appearance: textfield;
- }
+
+
  .input.input-2{
    --border-color:  #FAB2FF;
    border-style:inset;
@@ -489,58 +506,24 @@ h1.title-head{
  }
 
 
- .input-box{
-   position: relative;
-   display: flex;
-   flex-direction:row;
-   justify-content:center;
-   align-items:center;
- }
 
- .input-box.input-box-1{
-   --pad : 2px;
+
+ .input.input-3{
    --c1 : #c21500;
    --c2 : #ffc500;
-   --radius : 8px;
 
-   background: var(--c1);
    background-image: linear-gradient(135deg,var(--c1), var(--c2));
-   border-radius: var(--radius);
-
-   &::after {
-     display: block;
-     position: absolute;
-     top: var(--pad);
-     left: var(--pad);
-     bottom: var(--pad);
-     right: var(--pad);
-     background:#222227;
-     content: '';
-     z-index: 1;
-     border-radius: calc(var(--radius) - 1px);
-   }
+   padding:var(--br-width);
+   border:none;
  }
 
-  .input-box.input-box-1:hover{
-    @supports (background:paint(something)){
-      background-image: -webkit-gradient(linear, left top, left bottom, from(var(--angle)), color-stop(var(--c1)), to(var(--c2)));
-      background-image: -webkit-linear-gradient(var(--angle), var(--c1), var(--c2)) ;
-      background-image: -o-linear-gradient(var(--angle), var(--c1), var(--c2)) ;
-      background-image: linear-gradient(var(--angle), var(--c1), var(--c2)) ;
-  		-webkit-animation: 4s rotate-angle linear infinite normal;
-  		animation: 4s rotate-angle linear infinite normal;
-  	}
-  }
-
-  .input-box.input-box-1 .input{
-   border : none;
-   --radius : 0;
-   z-index: 2;
- }
-
- .input-box.input-box-2{
+ .input.input-4{
    --c1 : #6018DC;
    --c2 : #EEAD92;
+
+   background-image: linear-gradient(135deg,var(--c1), var(--c2));
+   padding:var(--br-width);
+   border:none;
 
    @supports (background:paint(something)){
      background-image: -webkit-gradient(linear, left top, left bottom, from(var(--angle)), color-stop(var(--c1)), to(var(--c2)));
@@ -551,6 +534,18 @@ h1.title-head{
  		animation: 4s rotate-angle linear infinite normal;
  	}
  }
+
+ .input.input-3:hover,.input.input-4:hover{
+   @supports (background:paint(something)){
+     background-image: -webkit-gradient(linear, left top, left bottom, from(var(--angle)), color-stop(var(--c1)), to(var(--c2)));
+     background-image: -webkit-linear-gradient(var(--angle), var(--c1), var(--c2)) ;
+     background-image: -o-linear-gradient(var(--angle), var(--c1), var(--c2)) ;
+     background-image: linear-gradient(var(--angle), var(--c1), var(--c2)) ;
+    -webkit-animation: 4s rotate-angle linear infinite normal;
+    animation: 4s rotate-angle linear infinite normal;
+  }
+ }
+
 
 
 /*******************************
