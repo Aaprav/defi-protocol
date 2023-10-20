@@ -21,9 +21,13 @@ h1.title-head{
 
   /* font: font-weight font-size/line-height font-family; */
   font: 700 50px/50px 'Open Sans-700', sans-serif;
+
+
 }
 
-
+h1.title-head.margin_top_large {
+  margin-top: 100px;
+}
 /*******************************
  *     Button examoles         *
  *******************************/
@@ -452,21 +456,26 @@ h1.title-head{
    --bg : #222227;
    --duration: .4s;
    --width: 100%;
+   --btn-bg : #333;
+   --svg-col : #ccc;
 
    position: relative;
    display: flex;
    flex-direction:row;
    justify-content:center;
    align-items:center;
-   border:solid var(--br-width) var(--border-color);
+   padding:var(--br-width);
+   background: var(--border-color);
    border-radius: var(--radius);
    transition: var(--duration) ease;
    transition-property: color, border-color, box-shadow;
    width: 100%;
    overflow:hidden;
+   height:50px;
  }
  .input:hover {
    --border-color: #90F7EC;
+   /* --svg-col : #000; */
  }
 
  .input input{
@@ -475,16 +484,17 @@ h1.title-head{
    outline:none;
    background: var(--bg);
    width: var(--width);
+   height: 100%;
    border: none;
    color: var(--color);
    font: 400 18px/22px 'Roboto Mono', sans-serif;
-   padding: 10px 15px;
+   padding: 0 15px;
    border-radius: calc(var(--radius) - 1px);
+   flex-shrink: 1;
 
    &::placeholder{
      color: #ccc;
    }
-   /* .input input */
    &::-webkit-outer-spin-button,
    &::-webkit-inner-spin-button {
      -webkit-appearance: none;
@@ -495,10 +505,34 @@ h1.title-head{
    }
  }
 
+ .input button{
+   position: relative;
+   display:block;
+   outline: none;
+   border:none;
+   background:var(--btn-bg);
+   flex-shrink: 0;
+   height: 100%;
+ }
+
+ .input button svg{
+   width: 25px;
+   height:auto;
+   fill: var(--svg-col);
+ }
+ .input button:hover svg{
+   --svg-col : #ffffff;
+ }
+
+ .input.input-btn input{
+   border-radius: calc(var(--radius) - 1px) 0 0 calc(var(--radius) - 1px);
+ }
+ .input.input-btn button{
+   border-radius: 0 calc(var(--radius) - 1px) calc(var(--radius) - 1px) 0;
+ }
 
  .input.input-2{
    --border-color:  #FAB2FF;
-   border-style:inset;
    box-shadow:0 0 6px 0 var(--border-color);
  }
  .input.input-2:hover{
@@ -511,31 +545,11 @@ h1.title-head{
  .input.input-3{
    --c1 : #c21500;
    --c2 : #ffc500;
+   --border-color : var(--c1);
 
    background-image: linear-gradient(135deg,var(--c1), var(--c2));
-   padding:var(--br-width);
-   border:none;
  }
-
- .input.input-4{
-   --c1 : #6018DC;
-   --c2 : #EEAD92;
-
-   background-image: linear-gradient(135deg,var(--c1), var(--c2));
-   padding:var(--br-width);
-   border:none;
-
-   @supports (background:paint(something)){
-     background-image: -webkit-gradient(linear, left top, left bottom, from(var(--angle)), color-stop(var(--c1)), to(var(--c2)));
-     background-image: -webkit-linear-gradient(var(--angle), var(--c1), var(--c2)) ;
-     background-image: -o-linear-gradient(var(--angle), var(--c1), var(--c2)) ;
-     background-image: linear-gradient(var(--angle), var(--c1), var(--c2)) ;
- 		-webkit-animation: 4s rotate-angle linear infinite normal;
- 		animation: 4s rotate-angle linear infinite normal;
- 	}
- }
-
- .input.input-3:hover,.input.input-4:hover{
+ .input.input-3:hover{
    @supports (background:paint(something)){
      background-image: -webkit-gradient(linear, left top, left bottom, from(var(--angle)), color-stop(var(--c1)), to(var(--c2)));
      background-image: -webkit-linear-gradient(var(--angle), var(--c1), var(--c2)) ;
@@ -546,6 +560,51 @@ h1.title-head{
   }
  }
 
+
+ .input.input-4{
+   --c1 : #6018DC;
+   --c2 : #EEAD92;
+   --border-color : var(--c1);
+
+   background-image: linear-gradient(135deg,var(--c1), var(--c2));
+   @supports (background:paint(something)){
+     background-image: -webkit-gradient(linear, left top, left bottom, from(var(--angle)), color-stop(var(--c1)), to(var(--c2)));
+     background-image: -webkit-linear-gradient(var(--angle), var(--c1), var(--c2)) ;
+     background-image: -o-linear-gradient(var(--angle), var(--c1), var(--c2)) ;
+     background-image: linear-gradient(var(--angle), var(--c1), var(--c2)) ;
+ 		-webkit-animation: 4s rotate-angle linear infinite normal;
+ 		animation: 4s rotate-angle linear infinite normal;
+ 	}
+ }
+
+ .input.input-4:hover{
+   @supports (background:paint(something)){
+     animation-direction: reverse;
+  }
+ }
+
+ .input.input-5{
+   --border-color : #BB4E75;
+   --btn-bg : #BB4E75;
+   &:hover{
+     --border-color : #F067B4;
+     --btn-bg : #F067B4;
+   }
+ }
+ .input.input-5 input{
+   padding-right: 8px;
+ }
+
+  .input.input-6{
+    --border-color : #FFA8A8;
+    --btn-bg:#222227;
+    &:hover{
+      --border-color : #FF96F9;
+    }
+  }
+  .input.input-6 input{
+    padding-right: 0;
+  }
 
 
 /*******************************
