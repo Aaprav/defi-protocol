@@ -1,0 +1,27 @@
+@property --angle {
+	syntax: '<angle>';
+	initial-value: 0deg;
+	inherits: false;
+}
+@-webkit-keyframes rotate-angle {
+	from {--angle: 0deg;}
+	to {--angle: 360deg;}
+}
+@keyframes rotate-angle {
+	from {--angle: 0deg;}
+	to {--angle: 360deg;}
+}
+
+@property --distance {
+	syntax: '<percentage>';
+	initial-value: 0%;
+	inherits: false;
+}
+@-webkit-keyframes move-forward {
+  from {--distance: 0;}
+	to {--distance: 100;}
+}
+@keyframes move-forward {
+	from {--distance: 0%;}
+	to {--distance: 100%;}
+}

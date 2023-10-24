@@ -1,10 +1,9 @@
+@import "keyframes.css";
+
 body{
   background: #222227;
   box-sizing: border-box;
-
 }
-
-
 
 
 h1.title-head{
@@ -43,12 +42,10 @@ h1.title-head.margin_top_large {
   flex-direction:row;
   justify-content:center;
   align-items:center;
-  user-select: none;
-  -webkit-user-select: none;
   cursor: pointer;
+  text-decoration: none;
   color: var(--color);
   background-color: var(--bg);
-  /* border: 1px solid #759ae1; */
   border-radius: var(--radius);
   font: 400 22px/25px 'Open Sans', sans-serif;
   transition: var(--duration) ease;
@@ -298,22 +295,6 @@ h1.title-head.margin_top_large {
 
 
 
-@property --angle {
-	syntax: '<angle>';
-	initial-value: 0deg;
-	inherits: false;
-}
-@-webkit-keyframes rotate-angle {
-	from {--angle: 0deg;}
-	to {--angle: 360deg;}
-}
-@keyframes rotate-angle {
-	from {--angle: 0deg;}
-	to {--angle: 360deg;}
-}
-
-
-
 .button.button-9{
   --pad : 3px;
   --c1 : #DC2424;
@@ -376,21 +357,6 @@ h1.title-head.margin_top_large {
 .button.button-10 span{
   position: relative;
   z-index: 1;
-}
-
-
-@property --distance {
-	syntax: '<percentage>';
-	initial-value: 0%;
-	inherits: false;
-}
-@-webkit-keyframes move-forward {
-  from {--distance: 0;}
-	to {--distance: 100;}
-}
-@keyframes move-forward {
-	from {--distance: 0%;}
-	to {--distance: 100%;}
 }
 
 .button.button-11{
@@ -475,7 +441,6 @@ h1.title-head.margin_top_large {
  }
  .input:hover {
    --border-color: #90F7EC;
-   /* --svg-col : #000; */
  }
 
  .input input{
@@ -539,7 +504,9 @@ h1.title-head.margin_top_large {
    box-shadow:0 0 12px 0 var(--border-color);
  }
 
+ .input.input-7{
 
+ }
 
 
  .input.input-3{
@@ -584,11 +551,11 @@ h1.title-head.margin_top_large {
  }
 
  .input.input-5{
-   --border-color : #BB4E75;
-   --btn-bg : #BB4E75;
+   --c1  : #BB4E75;
+   --border-color : var(--c1);
+   --btn-bg : var(--c1);
    &:hover{
-     --border-color : #F067B4;
-     --btn-bg : #F067B4;
+     --c1  : #F067B4;
    }
  }
  .input.input-5 input{
@@ -596,20 +563,162 @@ h1.title-head.margin_top_large {
  }
 
   .input.input-6{
-    --border-color : #FFA8A8;
-    --btn-bg:#222227;
-    &:hover{
-      --border-color : #FF96F9;
-    }
+    --c1 : #81FFEF;
+    --c2 : #F067B4;
+    --btn-bg : var(--bg);
+
   }
   .input.input-6 input{
     padding-right: 0;
   }
 
+  .input.input-7{
+    --border-color: #cc2b5e;
+
+    &:hover {
+      --border-color: #753a88;
+    }
+  }
+
+  .input.input-7{
+    --border-color: #cc2b5e;
+
+    &:hover {
+      --border-color: #753a88;
+    }
+  }
+
+  .input.input-8{
+    --c1 : #00416A;
+    --c2 : #E4E5E6;
+  }
+
+
+  .input.input-9{
+    --c1  : #4364F7;
+    &:hover{
+      --c1  : #0052D4;
+    }
+  }
+
+
 
 /*******************************
- *       Font examoles         *
- *******************************/
+*      Select examoles         *
+*******************************/
+
+
+  .select{
+    --radius: 6px;
+    --br-width: 2px;
+    --color:  #fff;
+    --op-color:  #ccc;
+    --border-color:  #32CCBC;
+    --bg : #222227;
+    --duration: .4s;
+    --svg-col : #ccc;
+
+    position: relative;
+    display: block;
+    transition: var(--duration) ease;
+    transition-property: color, border-color, box-shadow;
+    width: 100%;
+  }
+  .select .select-head{
+    position: relative;
+    display: flex;
+    flex-direction:row;
+    justify-content:space-between;
+    align-items:center;
+    background: var(--border-color);
+    border-radius: var(--radius);
+    color: var(--color);
+    padding: 8px 10px;
+    width: 100%;
+    overflow:hidden;
+    cursor: pointer;
+    &:hover{
+      --svg-col: var(--border-color);
+    }
+    &::before{
+      position: absolute;
+      display: block;
+      content: "";
+      top: var(--br-width);
+      bottom: var(--br-width);
+      left: var(--br-width);
+      right: var(--br-width);
+      background: var(--bg);
+      border-radius: calc(var(--radius) - 1px);
+    }
+  }
+  .select .select-head .select-selected{
+    position: relative;
+    display: block;
+    font: 400 18px/22px 'Open Sans-500', sans-serif;
+    width:100%;
+    flex-shrink: 1;
+  }
+  .select .select-head .select-toggle{
+    position: relative;
+    display: block;
+    flex-shrink: 0;
+  }
+  .select .select-head .select-toggle svg{
+    width: 20px;
+    height: auto;
+    fill: var(--svg-col);
+  }
+
+  .select .select-options{
+    position: absolute;
+    display:none;
+    top:calc(100% + 4px);
+    left: 0;
+    width: 100%;
+    background: var(--border-color);
+    padding: var(--br-width);
+    border-radius: var(--radius);
+    z-index: 2;
+  }
+  .select .select-options .select-option{
+    position: relative;
+    display: block;
+    color: var(--op-color);
+    background: var(--bg);
+    font: 400 16px/22px 'Open Sans', sans-serif;
+    margin-bottom: var(--br-width);
+    padding: 8px 10px;
+    cursor: pointer;
+    &:first-child{
+      border-radius: calc(var(--radius) - 1px) calc(var(--radius) - 1px) 0 0;
+    }
+    &:last-child{
+      margin-bottom: 0;
+      border-radius: 0 0 calc(var(--radius) - 1px) calc(var(--radius) - 1px);
+    }
+    &:hover{
+      --op-color: var(--color);
+    }
+
+  }
+  .select .select-options .select-option.active{
+    --op-color: var(--border-color);
+  }
+
+
+  .select.show .select-options{
+    display: block;
+  }
+  .select.show .select-head .select-toggle svg{
+    transform: rotate(180deg);
+    --svg-col: var(--border-color);
+
+  }
+
+/*******************************
+*       Font examoles         *
+*******************************/
 
 .fonts-para {
   display: block;
