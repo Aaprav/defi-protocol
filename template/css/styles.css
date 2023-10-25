@@ -504,11 +504,6 @@ h1.title-head.margin_top_large {
    box-shadow:0 0 12px 0 var(--border-color);
  }
 
- .input.input-7{
-
- }
-
-
  .input.input-3{
    --c1 : #c21500;
    --c2 : #ffc500;
@@ -673,7 +668,7 @@ h1.title-head.margin_top_large {
   .select .select-options{
     position: absolute;
     display:none;
-    top:calc(100% + 4px);
+    top:calc(100% + 10px);
     left: 0;
     width: 100%;
     background: var(--border-color);
@@ -687,7 +682,7 @@ h1.title-head.margin_top_large {
     color: var(--op-color);
     background: var(--bg);
     font: 400 16px/22px 'Open Sans', sans-serif;
-    margin-bottom: var(--br-width);
+    margin-bottom: 1px;
     padding: 8px 10px;
     cursor: pointer;
     &:first-child{
@@ -702,18 +697,75 @@ h1.title-head.margin_top_large {
     }
 
   }
+
+
+  .select.select-2{
+    --c1 : #4A569D;
+    --c2 : #E4E5E6;
+    --border-color : var(--c1);
+  }
+  .select.select-2 .select-head{
+    background-image: linear-gradient(135deg,var(--c1), var(--c2));
+    &:hover{
+      background-image: linear-gradient(135deg,var(--c2), var(--c1));
+    }
+  }
+  .select.select-2 .select-options{
+    background-image: linear-gradient(135deg,var(--c1), var(--c2));
+  }
+
+  .select.select-4{
+    --c1 : #00416A;
+    --c2 : #E4E5E6;
+    --border-color : var(--c1);
+  }
+  .select.select-3 .select-head,.select.select-3 .select-options{
+    background-image: linear-gradient(135deg,var(--c1), var(--c2));
+    @supports (background:paint(something)){
+      background-image: -webkit-gradient(linear, left top, left bottom, from(var(--angle)), color-stop(var(--c1)), to(var(--c2)));
+      background-image: -webkit-linear-gradient(var(--angle), var(--c1), var(--c2)) ;
+      background-image: -o-linear-gradient(var(--angle), var(--c1), var(--c2)) ;
+      background-image: linear-gradient(var(--angle), var(--c1), var(--c2)) ;
+     -webkit-animation: 4s rotate-angle linear infinite normal;
+     animation: 4s rotate-angle linear infinite normal;
+   }
+  }
+
+  .select.select-4{
+    --c1 : #EEAD92;
+    --c2 : #6018DC;
+  }
+  .select.select-4 .select-head .select-selected{
+    --c3 : #ccc;
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    background: var(--color);
+    background-image: linear-gradient(135deg,var(--c1), var(--c3));
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none; /* Standard syntax */
+    width:max-content;
+    @supports (background:paint(something)){
+      background-image:-webkit-gradient(linear,left top, right top,from(var(--c1)),color-stop(var(--c3)),color-stop(var(--c3)),to(var(--c1)));
+      background-image:-o-linear-gradient(left,var(--c1) var(--distance),var(--c3) calc(var(--distance) + 5%),var(--c3) calc(var(--distance) + 25%),var(--c1) calc(var(--distance) + 30%));
+      background-image:linear-gradient(90deg,var(--c1) var(--distance),var(--c3) calc(var(--distance) + 5%),var(--c3) calc(var(--distance) + 25%),var(--c1) calc(var(--distance) + 30%));
+      background-image:linear-gradient(90deg,var(--c1) var(--distance),var(--c3) calc(var(--distance) + 5%),var(--c3) calc(var(--distance) + 25%),var(--c1) calc(var(--distance) + 30%));
+  		-webkit-animation: 3s move-forward linear infinite normal;
+  		animation: 3s move-forward linear infinite normal;
+    }
+  }
+
   .select .select-options .select-option.active{
     --op-color: var(--border-color);
   }
-
-
   .select.show .select-options{
     display: block;
   }
   .select.show .select-head .select-toggle svg{
     transform: rotate(180deg);
     --svg-col: var(--border-color);
-
   }
 
 /*******************************
