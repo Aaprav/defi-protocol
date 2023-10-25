@@ -1,0 +1,31 @@
+@import "keyframes.css";
+
+/*==============================
+	Common styles
+==============================*/
+
+
+html {
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+html,
+body {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+body {
+  font-family: 'Gabarito', sans-serif;
+  background-color: #16151a;
+  -webkit-font-smoothing: antialiased;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+body::-webkit-scrollbar-track {
+  display: none;
+}
+body::-webkit-scrollbar-thumb {
+  display: none;
+}

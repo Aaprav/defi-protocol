@@ -567,34 +567,6 @@ h1.title-head.margin_top_large {
     padding-right: 0;
   }
 
-  .input.input-7{
-    --border-color: #cc2b5e;
-
-    &:hover {
-      --border-color: #753a88;
-    }
-  }
-
-  .input.input-7{
-    --border-color: #cc2b5e;
-
-    &:hover {
-      --border-color: #753a88;
-    }
-  }
-
-  .input.input-8{
-    --c1 : #00416A;
-    --c2 : #E4E5E6;
-  }
-
-
-  .input.input-9{
-    --c1  : #4364F7;
-    &:hover{
-      --c1  : #0052D4;
-    }
-  }
 
 
 
