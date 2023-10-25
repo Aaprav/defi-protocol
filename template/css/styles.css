@@ -619,6 +619,10 @@ h1.title-head.margin_top_large {
     transition: var(--duration) ease;
     transition-property: color, border-color, box-shadow;
     width: 100%;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none; /* Standard syntax */
   }
   .select .select-head{
     position: relative;
