@@ -612,6 +612,7 @@ h1.title-head.margin_top_large {
     --bg : #222227;
     --duration: .4s;
     --svg-col : #ccc;
+    --check-col : #999;
 
     position: relative;
     display: block;
@@ -678,7 +679,10 @@ h1.title-head.margin_top_large {
   }
   .select .select-options .select-option{
     position: relative;
-    display: block;
+    display: flex;
+    flex-direction:row;
+    justify-content:space-between;
+    align-items:center;
     color: var(--op-color);
     background: var(--bg);
     font: 400 16px/22px 'Open Sans', sans-serif;
@@ -694,10 +698,52 @@ h1.title-head.margin_top_large {
     }
     &:hover{
       --op-color: var(--color);
+      --check-col: var(--color);
     }
-
   }
 
+  .select .select-options .select-option span{
+    osition: relative;
+    display: flex;
+    flex-direction:row;
+    justify-content:center;
+    align-items:center;
+    background: #444;
+    border-radius: 50%;
+    height: 16px;
+    width: 16px;
+  }
+  .select .select-options .select-option span i{
+    position: relative;
+    display:block;
+    background:  var(--check-col);;
+    border-radius: 50%;
+    margin:0;
+    height: 10px;
+    width: 10px;
+  }
+  .select .select-options .select-option svg{
+    position: relative;
+    display:block;
+    background: #444;
+    border-radius: 50%;
+    margin:0;
+    height: 16px;
+    width: 16px;
+    stroke: var(--check-col);
+    stroke-width : 1.5px;
+    stroke-linecap : round;
+    stroke-linejoin : round;
+  }
+  .select .select-options.select-options-1 .select-option svg{
+    background: transparent;
+    border-radius: 0;
+    height: 20px;
+    width: 20px;
+  }
+  .select .select-options.select-options-2 .select-option svg{
+    border-radius: 0;
+  }
 
   .select.select-2{
     --c1 : #4A569D;
@@ -714,7 +760,7 @@ h1.title-head.margin_top_large {
     background-image: linear-gradient(135deg,var(--c1), var(--c2));
   }
 
-  .select.select-4{
+  .select.select-3{
     --c1 : #00416A;
     --c2 : #E4E5E6;
     --border-color : var(--c1);
@@ -734,6 +780,7 @@ h1.title-head.margin_top_large {
   .select.select-4{
     --c1 : #EEAD92;
     --c2 : #6018DC;
+    --border-color : var(--c1);
   }
   .select.select-4 .select-head .select-selected{
     --c3 : #ccc;
@@ -757,8 +804,23 @@ h1.title-head.margin_top_large {
     }
   }
 
+  .select.select-5{
+    --border-color:  #EA5455;
+  }
+  .select.select-5 .select-options{
+    position: relative;
+    margin-top: 10px;
+  }
+
+
   .select .select-options .select-option.active{
     --op-color: var(--border-color);
+    --check-col: var(--border-color);
+  }
+  .select.select-2 .select-options .select-option.active,
+  .select.select-3 .select-options .select-option.active,
+  .select.select-4 .select-options .select-option.active{
+    --check-col: #49F965;
   }
   .select.show .select-options{
     display: block;
