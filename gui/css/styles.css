@@ -43,6 +43,9 @@ body {
   font-family: 'Gabarito', sans-serif;
   background-color: var(--base-dark);
   -webkit-font-smoothing: antialiased;
+  margin:0;
+  width:100%;
+  box-sizing : border-box;
 }
 
 body::-webkit-scrollbar {
@@ -59,9 +62,7 @@ body::-webkit-scrollbar-thumb {
     position: relative;
     display: block;
     width: 100%;
-background: pink;
     margin:0;
-
   }
 
   .navigation .nav-body{
@@ -72,16 +73,15 @@ background: pink;
     align-items:center;
     width: 100%;
     margin:0;
-    /* padding: 5px 10px; */
-    background:red;
+    padding: 5px 0;
+    /* background:red; */
   }
   .navigation .nav-body .nav-logo{
     position: relative;
     display: block;
     width:50px;
     height:auto;
-    flex-shrink:0;
-    margin-right: 20px;
+    margin-left: 10px;
   }
   .navigation .nav-body .nav-bar{
     position: relative;
@@ -90,7 +90,9 @@ background: pink;
     justify-content:space-between;
     align-items:center;
     width: 100%;
-    background:yellow;
+    padding-left: 50px;
+    margin-right : 10px;
+    /* background:yellow; */
     flex-shrink:1;
 
   }
@@ -104,11 +106,103 @@ background: pink;
   .nav-bar .nav-menu .menu-item{
     position: relative;
     display: block;
+    color: var(--text-col-3);
+    margin-right: 15px;
+    font: 400 18px/20px 'Gabarito', sans-serif;
+    text-decoration : none;
+    transition: color .4s;
+    &:hover{
+      color: var(--text-col-2);
+    }
+  }
+  .nav-bar .nav-menu .menu-item.active{
+    color: var(--col-btn);
   }
   .navigation .nav-body .nav-bar .connect-wallet{
     position: relative;
     display: block;
+    cursor: pointer;
+    text-decoration: none;
+    color: var(--col-btn);
+    background: var(--bg-btn);
+    border-radius: 34px;
+    font: 400 16px/18px 'Gabarito', sans-serif;
+    transition: color .4s, background-color .4s;
+    margin: 0;
+    padding: 8px 12px;
+    outline: none;
+    border:none;
+    &:hover{
+      background: var(--bg-btn-hover);
+      color: var(--col-btn-hover);
+    }
   }
+
+
+  input#theme-toggle-input{
+    width: 0;
+    height: 0;
+    visibility: hidden;
+  }
+
+  .theme-toggle{
+    --size: 20px;
+    position: absolute;
+
+    right: 145px;
+    display: flex;
+    flex-direction:row;
+    justify-content:center;
+    align-items:center;
+    background: var(--bg-btn);
+    border: solid 1px var(--bg-btn-hover);
+    padding: 6px;
+    border-radius: 32px;
+
+    &:after {
+    position: absolute;
+    display: block;
+		content: "";
+		width:  calc(var(--size) + 6px);
+		height: calc(var(--size) + 6px);
+		top: 3px;
+		left: 3px;
+		background: linear-gradient(180deg, #ffcc89, #d8860b);
+		border-radius: 50%;
+		transition: 0.3s;
+	}
+  }
+  .theme-toggle svg{
+    position: relative;
+  	display: block;
+		width: var(--size);
+    height: var(--size);
+    z-index: 1;
+  }
+  .theme-toggle svg.sun {
+    fill: #fff;
+    margin-right: 14px;
+  }
+  .theme-toggle svg.moon {
+    fill: #7e7e7e;
+  }
+
+input#theme-toggle-input:checked + .theme-toggle{
+    /* background:red; */
+    &:after {
+      left: calc(var(--size) + 17px);
+      background: linear-gradient(180deg, #777, #3a3a3a);
+    }
+  }
+
+input#theme-toggle-input:checked + .theme-toggle svg.sun {
+  fill: #7e7e7e;
+  margin-right: 14px;
+}
+input#theme-toggle-input:checked + .theme-toggle svg.moon {
+  fill: #fff;
+}
+
 
 
 /*==============================
@@ -122,7 +216,7 @@ background: pink;
     justify-content:center;
     align-items:center;
     width: 100%;
-    height : 100vh;
+    /* height : 100vh; */
   }
 
   .swap_wrapper{
@@ -135,7 +229,7 @@ background: pink;
     padding: 10px;
     border-radius: 22px;
     overflow:hidden;
-    margin: 0;
+    margin: 90px 0 0;
     background: var(--c1);
     background-image: linear-gradient(135deg, var(--c1), var(--c2));
     box-shadow: 0 0 70px 0 var(--shadow-color);
