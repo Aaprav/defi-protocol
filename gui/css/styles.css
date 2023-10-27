@@ -1,9 +1,32 @@
 @import "keyframes.css";
 
+
+
+/*==============================
+	Common root color
+==============================*/
+
+:root{
+  --base-dark: #16151a;
+  --base-light: #222227;
+
+  --border-color : #236864;
+  --shadow-color : #233135;
+
+  --bg-btn:  #192629;
+  --bg-btn-hover : #2E3A3C;
+
+  --text-col-1 : #32CCBC;
+  --text-col-2 : #fff;
+  --text-col-3 : #ccc;
+  --text-col-4 : #999;
+  --text-col-5 : #444;
+
+}
+
 /*==============================
 	Common styles
 ==============================*/
-
 
 html {
   -webkit-text-size-adjust: 100%;
@@ -16,7 +39,7 @@ body {
 }
 body {
   font-family: 'Gabarito', sans-serif;
-  background-color: #16151a;
+  background-color: var(--base-dark);
   -webkit-font-smoothing: antialiased;
 }
 
@@ -30,6 +53,11 @@ body::-webkit-scrollbar-thumb {
   display: none;
 }
 
+
+/*==============================
+	swap page styles
+==============================*/
+
   .wrapper{
     position: relative;
     display: flex;
@@ -41,22 +69,36 @@ body::-webkit-scrollbar-thumb {
   }
 
   .swap_wrapper{
+    --c1 : var(--border-color);
+    --c2 : var(--bg-btn);
+
     position: relative;
     display: block;
-    width:520px;
-    padding:2px;
+    width:500px;
+    padding: 10px;
     border-radius: 22px;
-    background: #32CCBC;
     overflow:hidden;
     margin: 0;
-  }
+    background: var(--c1);
+    background-image: linear-gradient(135deg, var(--c1), var(--c2));
+    box-shadow: 0 0 70px 0 var(--shadow-color);
 
-  .swap_wrapper .swap_wrapper_inner{
-    position: relative;
-    display: block;
-    background: #222227;
-    border-radius: 20px;
-    padding: 10px;
+    @supports (background:paint(something)){
+      background-image: -webkit-gradient(linear, left top, left bottom, from(var(--angle)), color-stop(var(--c1)), to(var(--c2)));
+      background-image: -webkit-linear-gradient(var(--angle), var(--c1), var(--c2)) ;
+      background-image: -o-linear-gradient(var(--angle), var(--c1), var(--c2)) ;
+      background-image: linear-gradient(var(--angle), var(--c1), var(--c2)) ;
+  		-webkit-animation: 4s rotate-angle linear infinite normal;
+  		animation: 4s rotate-angle linear infinite normal;
+  	}
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 2px;
+      z-index: 0;
+      background: var(--base-dark);
+      border-radius: 20px;
+    }
   }
 
   .swap_wrapper .swap_menu{
@@ -69,20 +111,41 @@ body::-webkit-scrollbar-thumb {
   }
 
   .swap_wrapper .swap_menu .swap_item{
+    --c1 : var(--text-col-1);
+    --c2 : var(--text-col-2);
+
     position: relative;
     display: block;
-    font: 400 18px/22px 'Gabarito', sans-serif;
-    color: #fff;
+    font: 400 20px/22px 'Gabarito-500', sans-serif;
     margin: 0;
+
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    background: var(--c1);
+    background-image: linear-gradient(135deg,var(--c1), var(--c2));
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+    @supports (background:paint(something)){
+      background-image:-webkit-gradient(linear,left top, right top,from(var(--c1)),color-stop(var(--c2)),color-stop(var(--c2)),to(var(--c1)));
+      background-image:-o-linear-gradient(left,var(--c1) var(--distance),var(--c2) calc(var(--distance) + 5%),var(--c2) calc(var(--distance) + 25%),var(--c1) calc(var(--distance) + 30%));
+      background-image:linear-gradient(90deg,var(--c1) var(--distance),var(--c2) calc(var(--distance) + 5%),var(--c2) calc(var(--distance) + 25%),var(--c1) calc(var(--distance) + 30%));
+      background-image:linear-gradient(90deg,var(--c1) var(--distance),var(--c2) calc(var(--distance) + 5%),var(--c2) calc(var(--distance) + 25%),var(--c1) calc(var(--distance) + 30%));
+  		-webkit-animation: 3s move-forward linear infinite normal;
+  		animation: 3s move-forward linear infinite normal;
+    }
   }
 
   .swap_wrapper .swap_menu button.swap_item{
     background: transparent;
     border:none;
     cursor: pointer;
-    color: #bbb;
+    color: var(--text-col-3);
     &:hover{
-      color: #fff;
+      color: var(--text-col-2);
     }
   }
 
@@ -93,12 +156,15 @@ body::-webkit-scrollbar-thumb {
   .swap_wrapper .swap_input_area{
     position: relative;
     display: block;
-    background: #444;
+    background: var(--base-light);
     border-radius: 15px;
     padding: 10px 15px;
     margin: 0;
     &:last-child{
       margin-top: 4px;
+    }
+    &:hover{
+      box-shadow: inset 0 0 6px var(--text-col-5);
     }
   }
 
@@ -107,9 +173,11 @@ body::-webkit-scrollbar-thumb {
     display: block;
     font: 400 15px/22px 'Gabarito', sans-serif;
     margin: 0 0 5px 8px;
-    color: #999;
+    color: var(--text-col-4);
+    cursor: pointer;
     &:last-child{
       margin: 5px 0 0 8px;
+      cursor: text;
     }
   }
 
@@ -129,11 +197,11 @@ body::-webkit-scrollbar-thumb {
     border: none;
     background: transparent;
     flex-shrink: 1;
-    color: #fff;
+    color: var(--text-col-2);
     padding: 5px 8px;
 
     &::placeholder{
-      color: #ccc;
+      color: var(--text-col-3);
     }
     &::-webkit-outer-spin-button,
     &::-webkit-inner-spin-button {
@@ -158,7 +226,7 @@ body::-webkit-scrollbar-thumb {
     flex-direction:row;
     justify-content:center;
     align-items:center;
-    background: #666;
+    background: var(--text-col-5);
     padding: 4px 6px;
     border-radius: 32px;
   }
@@ -166,8 +234,8 @@ body::-webkit-scrollbar-thumb {
   .coin_list_select img{
     position: relative;
     display: block;
-    width: 24px;
-    height: 24px;
+    width: 20px;
+    height: 20px;
   }
 
   .coin_list_select p{
@@ -175,7 +243,7 @@ body::-webkit-scrollbar-thumb {
     display: block;
     font: 400 18px/22px 'Gabarito', sans-serif;
     margin: 0 0 0 6px;
-    color: #fff;
+    color: var(--text-col-2);
   }
 
   .coin_list_select svg{
@@ -184,14 +252,14 @@ body::-webkit-scrollbar-thumb {
     width: 14px;
     height: 14px;
     margin: 0 2px 0 8px;
-    fill: #ccc;
+    fill: var(--text-col-3);
   }
 
   .coin_list_select:hover p{
-    color: #fff;
+    color: var(--text-col-2);
   }
   .coin_list_select:hover svg{
-    fill: #fff;
+    fill: var(--text-col-2);
   }
 
 
@@ -202,34 +270,36 @@ body::-webkit-scrollbar-thumb {
     flex-direction:row;
     justify-content:center;
     align-items:center;
+    cursor:pointer;
     z-index:1;
     width: 30px;
     height: 30px;
-    background: #444;
+    background: var(--base-light);
     top: calc(50% - 20px);
     left: calc(50% - 20px);
-    border-radius: 5px;
-    border: solid 4px #222227;
+    border-radius: 8px;
+    border: solid 4px var(--base-dark);
+    &:hover{
+      box-shadow: inset 0 0 5px var(--text-col-5);
+    }
   }
   .swap_input_toggle svg{
     height: 20px;
     width: auto;
     fill:none;
-    stroke : #aaa;
+    stroke : var(--text-col-4);
     stroke-width : 2px;
     stroke-linecap  : round;
     stroke-linejoin  : round;
+  }
+  .swap_input_toggle:hover svg{
+    stroke : var(--text-col-3);
   }
 
 
 
 
 button.swap_btn {
-  --radius: 14px;
-  --color:  #fff;
-  --bg:  #32CCBC;
-  --duration: .4s;
-
   position: relative;
   display: flex;
   flex-direction:row;
@@ -237,15 +307,18 @@ button.swap_btn {
   align-items:center;
   cursor: pointer;
   text-decoration: none;
-  color: var(--color);
-  background-color: var(--bg);
-  border-radius: var(--radius);
-  font: 400 22px/25px 'Open Sans', sans-serif;
-  transition: var(--duration) ease;
-  transition-property: color, background-color, border-color, box-shadow;
+  color: var(--text-col-1);
+  background: var(--bg-btn);
+  border-radius: 14px;
+  font: 400 22px/25px 'Gabarito', sans-serif;
+  transition: color .4s, background-color .4s;
   margin: 10px 0 0 0;
   padding: 15px 30px;
   outline: none;
   border:none;
   width: 100%;
+  &:hover{
+    background: var(--bg-btn-hover);
+    color: var(--text-col-2);
+  }
 }
