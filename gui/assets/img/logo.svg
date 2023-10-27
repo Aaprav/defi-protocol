@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="128" height="128" version="1.1" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <defs>
+  <linearGradient id="SvgjsLinearGradient2152">
+   <stop stop-color="#192629" offset="0"/>
+   <stop stop-color="#32CCBC" offset="1"/>
+  </linearGradient>
+ </defs>
+ <g transform="matrix(.13875 0 0 .13875 -5.342 -5.2033)" fill="url(#SvgjsLinearGradient2152)">
+  <polygon points="508.5 441.7 696.7 239.6 508.5 37.5" />
+  <polygon points="546.2 464.6 822.2 454.8 832.1 178.8"/>
+  <polygon points="556.8 507.5 758.9 695.7 961 507.5"/>
+  <polygon points="533.9 545.2 543.7 821.2 819.7 831.1"/>
+  <polygon points="491 555.8 302.8 757.9 491 960"/>
+  <polygon points="453.3 532.9 177.3 542.7 167.4 818.7"/>
+  <polygon points="442.7 490 240.6 301.8 38.5 490"/>
+  <polygon points="465.6 452.3 455.8 176.3 179.8 166.4"/>
+  <circle cx="502.7" cy="497" r="31.4"/>
+ </g>
+</svg>
