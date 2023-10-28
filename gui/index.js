@@ -29,6 +29,8 @@ function toggleTheme(value = false){
     document.documentElement.style.setProperty('--text-col-3', "#444");
     document.documentElement.style.setProperty('--text-col-4', "#444");
     document.documentElement.style.setProperty('--text-col-5', "#ccc");
+
+    document.documentElement.style.setProperty('--blur-bg', "rgba(0, 0, 0, .4)");
   }else {
     localStorage.setItem("theme", "dark");
 
@@ -49,9 +51,10 @@ function toggleTheme(value = false){
     document.documentElement.style.setProperty('--text-col-3', "#ccc");
     document.documentElement.style.setProperty('--text-col-4', "#999");
     document.documentElement.style.setProperty('--text-col-5', "#444");
+
+    document.documentElement.style.setProperty('--blur-bg', "rgba(0, 0, 0, .8)");
   }
 }
-
 
 
 

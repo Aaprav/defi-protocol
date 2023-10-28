@@ -24,6 +24,8 @@
   --text-col-4 : #999;
   --text-col-5 : #444;
 
+  --blur-bg : rgba(0, 0, 0, .8);
+
 }
 
 /*==============================
@@ -224,7 +226,7 @@ input#theme-toggle-input:checked + .theme-toggle svg.moon {
 
 
 /*==============================
-	swap page styles
+	      swap page styles
 ==============================*/
 
   .wrapper{
@@ -496,11 +498,13 @@ button.swap_btn {
 
 
 
-
+/*==============================
+	 Token select popup styles
+==============================*/
 
 .popup{
   position: fixed;
-  display: none;
+  display: block;
   width: 100vw;
   height: 100vh;
   top: 0;
@@ -512,7 +516,7 @@ button.swap_btn {
   content: "";
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, .8);
+  background: var(--blur-bg);
   filter: blur(20px);
   top:0;
   z-index: -1;
@@ -631,7 +635,7 @@ button.swap_btn {
     flex-shrink: 1;
 
     &::placeholder{
-      color: var(--text-col-5);
+      color: var(--text-col-4);
     }
   }
 
@@ -666,29 +670,37 @@ button.swap_btn {
     color: var(--text-col-2);
   }
 
-.popup .popup-body .popup-last.coins-lists{
+.popup .popup-body .popup-last{
   border: none;
   align-items:flex-start;
-  flex-wrap:wrap;
-  padding-bottom:0;
   max-height: calc(80vh - 300px);
   min-height:120px;
-  overflow:auto;
+  overflow:hidden;
+  padding: 15px 2px;
 
+}
+
+.coins-lists{
+  position:relative;
+  display:block;
+  width:100%;
+  height: 100%;
+  overflow:auto;
+  height: calc(80vh - 330px);
+  min-height:90px;
+  padding: 0 23px;
   &::-webkit-scrollbar {
     width: 4px;
   }
   &::-webkit-scrollbar-track {
     background: #222227;
-    border-right:solid 2px var(--border-color);
-
   }
   &::-webkit-scrollbar-thumb {
     background-color: var(--base-col);
   }
 }
 
-.popup-last.coins-lists .coins-list{
+.coins-lists .coins-list{
   position: relative;
   display: flex;
   flex-direction:row;
@@ -698,7 +710,7 @@ button.swap_btn {
   margin-bottom: 18px;
 }
 
-.popup-last.coins-lists .coins-list img{
+.coins-lists .coins-list img{
   position: relative;
   display: block;
   width: 35px;
@@ -708,35 +720,35 @@ button.swap_btn {
   margin-right: 15px;
 }
 
-.popup-last.coins-lists .coins-list .coin-details{
+.coins-lists .coins-list .coin-details{
   position: relative;
   display: block;
   width:100%;
   flex-shrink: 1;
 }
 
-.popup-last.coins-lists .coins-list .coin-details p{
+.coins-lists .coins-list .coin-details p{
   position: relative;
   display: block;
   font: 400 18px/22px 'Gabarito', sans-serif;
   color: var(--text-col-3);
   margin: 0 0 4px 0;
 }
-.popup-last.coins-lists .coins-list .coin-details span{
+.coins-lists .coins-list .coin-details span{
   position: relative;
   display: block;
   font: 400 14px/20px 'Gabarito', sans-serif;
   color: var(--text-col-4);
   margin: 0;
 }
-.popup-last.coins-lists .coins-list:hover .coin-details p{
+.coins-lists .coins-list:hover .coin-details p{
   color: var(--text-col-2);
 }
-.popup-last.coins-lists .coins-list:hover .coin-details span{
+.coins-lists .coins-list:hover .coin-details span{
   color: var(--text-col-3);
 }
 
-.popup-last.coins-lists .coins-list svg{
+.coins-lists .coins-list svg{
   position: relative;
   display:block;
   margin:0;
@@ -748,7 +760,7 @@ button.swap_btn {
   stroke-linejoin : round;
   flex-shrink: 0;
 }
-.popup-last.coins-lists .coins-list.active svg{
+.coins-lists .coins-list.active svg{
   stroke: var(--base-col);
 }
 
