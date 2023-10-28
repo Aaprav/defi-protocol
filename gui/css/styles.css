@@ -1,7 +1,7 @@
 @import "keyframes.css";
 
 
-
+/* test sync */
 /*==============================
 	Common root color
 ==============================*/
@@ -190,7 +190,7 @@ body::-webkit-scrollbar-thumb {
     z-index: 1;
   }
   .theme-toggle svg.sun {
-    fill: #000;
+    fill: #222227;
     margin-right: 14px;
   }
   .theme-toggle svg.moon {
