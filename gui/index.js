@@ -51,3 +51,14 @@ function toggleTheme(value = false){
     document.documentElement.style.setProperty('--text-col-5', "#444");
   }
 }
+
+
+
+
+$(".coin_list_select").click(function(){
+  $(".popup").show();
+})
+
+$("#close-btn").click(function(){
+  $(".popup").hide();
+})
