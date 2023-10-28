@@ -9,6 +9,7 @@
 :root{
   --base-dark: #16151a;
   --base-light: #222227;
+  --base-col : #32CCBC;
 
   --border-color : #236864;
   --shadow-color : #233135;
@@ -57,6 +58,12 @@ body::-webkit-scrollbar-track {
 body::-webkit-scrollbar-thumb {
   display: none;
 }
+
+
+/*==============================
+	        Top header
+==============================*/
+
 
   .navigation{
     position: relative;
@@ -116,7 +123,7 @@ body::-webkit-scrollbar-thumb {
     }
   }
   .nav-bar .nav-menu .menu-item.active{
-    color: var(--col-btn);
+    color: var(--base-col);
   }
   .navigation .nav-body .nav-bar .connect-wallet{
     position: relative;
@@ -138,6 +145,9 @@ body::-webkit-scrollbar-thumb {
     }
   }
 
+  /*==============================
+  	        theme switch
+  ==============================*/
 
   input#theme-toggle-input{
     width: 0;
@@ -154,8 +164,8 @@ body::-webkit-scrollbar-thumb {
     flex-direction:row;
     justify-content:center;
     align-items:center;
-    background: var(--bg-btn);
-    border: solid 1px var(--bg-btn-hover);
+    background: #888;
+    border: solid 1px #444;
     padding: 6px;
     border-radius: 32px;
 
@@ -180,15 +190,16 @@ body::-webkit-scrollbar-thumb {
     z-index: 1;
   }
   .theme-toggle svg.sun {
-    fill: #fff;
+    fill: #000;
     margin-right: 14px;
   }
   .theme-toggle svg.moon {
-    fill: #7e7e7e;
+    fill: #000;
   }
 
 input#theme-toggle-input:checked + .theme-toggle{
-    /* background:red; */
+  background: #192629;
+  border: solid 1px #2E3A3C;
     &:after {
       left: calc(var(--size) + 17px);
       background: linear-gradient(180deg, #777, #3a3a3a);
@@ -196,11 +207,11 @@ input#theme-toggle-input:checked + .theme-toggle{
   }
 
 input#theme-toggle-input:checked + .theme-toggle svg.sun {
-  fill: #7e7e7e;
+  fill: #ccc;
   margin-right: 14px;
 }
 input#theme-toggle-input:checked + .theme-toggle svg.moon {
-  fill: #fff;
+  fill: #ffffff;
 }
 
 

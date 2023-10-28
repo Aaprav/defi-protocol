@@ -9,7 +9,6 @@ $("#theme-toggle-input").click(function(e){
   toggleTheme(this.checked);
 })
 
-
 function toggleTheme(value = false){
   if(!value){
     localStorage.setItem("theme", "light");
@@ -20,10 +19,10 @@ function toggleTheme(value = false){
     document.documentElement.style.setProperty('--border-color', "#2DAB9F");
     document.documentElement.style.setProperty('--shadow-color', "#236864");
 
-    document.documentElement.style.setProperty('--bg-btn', "#092522");
+    document.documentElement.style.setProperty('--bg-btn', "#3F6965");
     document.documentElement.style.setProperty('--bg-btn-hover', "#124A44");
-    document.documentElement.style.setProperty('--col-btn', "#32CCBC");
-    document.documentElement.style.setProperty('--col-btn-hover', "#fff");
+    document.documentElement.style.setProperty('--col-btn', "#fff");
+    document.documentElement.style.setProperty('--col-btn-hover', "#32CCBC");
 
     document.documentElement.style.setProperty('--text-col-1', "#32CCBC");
     document.documentElement.style.setProperty('--text-col-2', "#222");
@@ -38,11 +37,12 @@ function toggleTheme(value = false){
 
     document.documentElement.style.setProperty('--border-color', "#236864");
     document.documentElement.style.setProperty('--shadow-color', "#233135");
-    document.documentElement.style.setProperty('--col-btn', "#32CCBC");
-    document.documentElement.style.setProperty('--col-btn-hover', "#fff");
+
 
     document.documentElement.style.setProperty('--bg-btn', "#192629");
     document.documentElement.style.setProperty('--bg-btn-hover', "#2E3A3C");
+    document.documentElement.style.setProperty('--col-btn', "#32CCBC");
+    document.documentElement.style.setProperty('--col-btn-hover', "#fff");
 
     document.documentElement.style.setProperty('--text-col-1', "#32CCBC");
     document.documentElement.style.setProperty('--text-col-2', "#fff");
