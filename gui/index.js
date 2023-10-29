@@ -163,3 +163,11 @@ $("#close-btn").click(function(){
   $(".popup").hide();
   renderSwitch()
 })
+
+
+$(".swap_input_toggle").click(function(){
+  let _tokenA = tokenA;
+  tokenA = tokenB;
+  tokenB = _tokenA;
+  renderSwitch()
+})
