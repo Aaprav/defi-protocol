@@ -71,24 +71,39 @@ function toggleTheme(value = false){
     {symbol:"WBTC",name:"Wrapped BTC",decimals:8,img:"./assets/coins/wbtc.png",address:"0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",hot:true}
   ]
 
+  let tokenA = {address:"-",balance:0}
+  let tokenB = {address:"",balance:0}
+  const updateTokenAddress = (switchId,address) => {
+    switchId == "A"?(tokenA.address = address):(tokenB.address = address);
+    let _filterString = $(".token-input").val();
+    renderHotTokens(switchId,_filterString);
+    renderTokens(switchId,_filterString);
+  }
 
-  const renderHotTokens = async(filterString = "") =>{
+  const renderHotTokens = async(switchId = "A",filterString = "") =>{
     try {
-      let _tokens = allTokens.filter(i=> !!i.hot).map((token,i)=>{
+      let _oppositeAddress = (switchId == "B"?tokenA:tokenB).address || "";
+      let _currentAddress = (switchId == "A"?tokenA:tokenB).address || "";
+
+      let _tokens = allTokens.filter(i=> !!i.hot && i.address != _oppositeAddress).map((token,i)=>{
         let{name,symbol,address,img } = token;
-        return `<button><img src=${img} key=${address}><p>${symbol}</p></button>`
-      })
-
+        return `<button onclick="updateTokenAddress('${switchId}','${address}');" key=${address}><img src=${img}><p>${symbol}</p></button>`
+      });
       $(".popup .popup-body .popup-middle .hot-tokens-list").html(_tokens)
-
     } catch (e) {
       console.log(e);
     }
   }
-  const renderTokens = async(filterString = "") =>{
+
+  const renderTokens = async(switchId = "A",filterString = "") =>{
     try {
+      let _oppositeAddress = (switchId == "B"?tokenA:tokenB).address || "";
+      let _currentAddress = (switchId == "A"?tokenA:tokenB).address || "";
+
       let _tokens = allTokens.filter((data,i)=>{
         let{name,symbol,address } = data;
+        if (address == _oppositeAddress) return null;
+
         if (filterString) {
           let _index = name.toUpperCase().search(filterString);
           _index = _index !== -1?_index:symbol.toUpperCase().search(filterString);
@@ -99,29 +114,52 @@ function toggleTheme(value = false){
         }
       }).map((token,i)=>{
         let{name,symbol,address,img } = token;
-
-        return `<div class="coins-list active" key=${address}>
+        return `<div class="coins-list${_currentAddress == address?" active":""}" onclick="updateTokenAddress('${switchId}','${address}');" key=${address}>
           <img src=${img}>
           <div class="coin-details"><p>${name}</p><span>${symbol}</span></div>
           <svg width="800px" height="800px" fill="none" viewBox="0 -0.5 25 25" ><path d="M5.5 12.5L10.167 17L19.5 8" /></svg>
         </div>`
-      })
-
+      });
       $(".popup .popup-body .popup-last .coins-lists").html(_tokens)
-
     } catch (e) {
       console.log(e);
     }
   }
 
 
-$(".coin_list_select").click(function(){
-  $(".popup").show();
-  renderHotTokens()
-  renderTokens()
+const renderSwitch = () =>{
+  let _TA = $("#select-token-A .coin_list_select_inner");
+  let _TB = $("#select-token-B .coin_list_select_inner");
 
+  if(!tokenA.address ){
+    _TA.html(`<div class="coin_list_select_inner"><p>Select a token</p></div>`)
+  }else {
+    let _t = allTokens.find(i=>i.address == tokenA.address);
+    _TA.html(`<div class="coin_list_select_inner"><img src=${_t.img}><p>${_t.symbol}</p></div>`)
+  }
+
+  if(!tokenB.address ){
+    _TB.html(`<div class="coin_list_select_inner"><p>Select a token</p></div>`)
+  }else {
+    let _t = allTokens.find(i=>i.address == tokenB.address);
+    _TB.html(`<div class="coin_list_select_inner"><img src=${_t.img}><p>${_t.symbol}</p></div>`)
+  }
+}
+
+
+$("#select-token-A").click(function(){
+  $(".popup").show();
+  renderHotTokens("A");
+  renderTokens("A");
 })
+$("#select-token-B").click(function(){
+  $(".popup").show();
+  renderHotTokens("B");
+  renderTokens("B");
+})
+
 
 $("#close-btn").click(function(){
   $(".popup").hide();
+  renderSwitch()
 })

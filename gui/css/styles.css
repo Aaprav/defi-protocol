@@ -388,6 +388,14 @@ input#theme-toggle-input:checked + .theme-toggle svg.moon {
     cursor: pointer;
   }
 
+  .coin_list_select .coin_list_select_inner{
+    position: relative;
+    display: flex;
+    flex-direction:row;
+    justify-content:center;
+    align-items:center;
+  }
+
   .coin_list_select img{
     position: relative;
     display: block;
@@ -491,7 +499,7 @@ button.swap_btn {
 
 .popup{
   position: fixed;
-  display: block;
+  display: none;
   width: 100vw;
   height: 100vh;
   top: 0;
