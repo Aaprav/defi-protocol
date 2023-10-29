@@ -76,13 +76,6 @@ body::-webkit-scrollbar-thumb {
 
   .navigation{
     position: relative;
-    display: block;
-    width: 100%;
-    margin:0;
-  }
-
-  .navigation .nav-body{
-    position: relative;
     display: flex;
     flex-direction:row;
     justify-content:flex-start;
@@ -90,16 +83,16 @@ body::-webkit-scrollbar-thumb {
     width: 100%;
     margin:0;
     padding: 5px 0;
-    /* background:red; */
   }
-  .navigation .nav-body .nav-logo{
+
+  .navigation .nav-logo{
     position: relative;
     display: block;
     width:50px;
     height:auto;
     margin-left: 10px;
   }
-  .navigation .nav-body .nav-bar{
+  .navigation .nav-bar{
     position: relative;
     display: flex;
     flex-direction:row;
@@ -111,7 +104,7 @@ body::-webkit-scrollbar-thumb {
     flex-shrink:1;
 
   }
-  .navigation .nav-body .nav-bar .nav-menu{
+  .navigation .nav-bar .nav-menu{
     position: relative;
     display: flex;
     flex-direction:row;
@@ -133,7 +126,7 @@ body::-webkit-scrollbar-thumb {
   .nav-bar .nav-menu .menu-item.active{
     color: var(--base-col);
   }
-  .navigation .nav-body .nav-bar .connect-wallet{
+  .navigation .nav-bar .connect-wallet{
     position: relative;
     display: block;
     cursor: pointer;
@@ -384,13 +377,6 @@ input#theme-toggle-input:checked + .theme-toggle svg.moon {
 
   .coin_list_select{
     position: relative;
-    display: block;
-    flex-shrink: 0;
-    cursor: pointer;
-  }
-
-  .coin_list_select .coin_list_select_inner{
-    position: relative;
     display: flex;
     flex-direction:row;
     justify-content:center;
@@ -398,6 +384,8 @@ input#theme-toggle-input:checked + .theme-toggle svg.moon {
     background: var(--text-col-5);
     padding: 4px 6px;
     border-radius: 32px;
+    flex-shrink: 0;
+    cursor: pointer;
   }
 
   .coin_list_select img{
@@ -405,6 +393,7 @@ input#theme-toggle-input:checked + .theme-toggle svg.moon {
     display: block;
     width: 20px;
     height: 20px;
+    border-radius: 50%;
   }
 
   .coin_list_select p{
@@ -567,8 +556,8 @@ button.swap_btn {
 .popup .popup-body .popup-head p{
   display: block;
   position: relative;
-  color: var(--text-col-3);
-  font: 400 16px/22px 'Gabarito', sans-serif;
+  color: var(--text-col-4);
+  font: 400 20px/22px 'Gabarito', sans-serif;
   margin: 0;
 }
 
@@ -578,7 +567,7 @@ button.swap_btn {
   cursor: pointer;
 }
 .popup .popup-body .popup-head span svg{
-  width: 20px;
+  width: 24px;
   height: auto;
   fill: var(--text-col-4);
 }
