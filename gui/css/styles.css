@@ -491,7 +491,7 @@ button.swap_btn {
 
 .popup{
   position: fixed;
-  display: none;
+  display: block;
   width: 100vw;
   height: 100vh;
   top: 0;
@@ -575,13 +575,13 @@ button.swap_btn {
   fill: var(--text-col-3);
 }
 
-.popup .popup-body .popup-middle.saved-coins{
+.popup .popup-body .popup-middle{
   justify-content: flex-start;
   flex-wrap:wrap;
   padding-bottom:0;
 }
 
-  .popup-middle.saved-coins .token-input{
+  .popup-middle .token-input{
     position: relative;
     display: flex;
     flex-direction:row;
@@ -598,7 +598,7 @@ button.swap_btn {
       border-color: var(--bg-btn-hover);
     }
   }
-  .popup-middle.saved-coins .token-input svg{
+  .popup-middle .token-input svg{
     position: relative;
     display:block;
     outline: none;
@@ -608,7 +608,7 @@ button.swap_btn {
     height:auto;
     fill: var(--text-col-4);
   }
-  .popup-middle.saved-coins .token-input input{
+  .popup-middle .token-input input{
     position: relative;
     display:block;
     background: transparent;
@@ -626,7 +626,17 @@ button.swap_btn {
     }
   }
 
-  .popup-middle.saved-coins button{
+  .popup-middle .hot-tokens-list{
+    position: relative;
+    display: flex;
+    flex-direction:row;
+    justify-content:flex-start;
+    align-items:center;
+    flex-wrap:wrap;
+    width: 100%;
+  }
+
+  .popup-middle .hot-tokens-list button{
     position: relative;
     display: flex;
     flex-direction:row;
@@ -642,14 +652,14 @@ button.swap_btn {
       background: var(--text-col-4);
     }
   }
-  .popup-middle.saved-coins button img{
+  .popup-middle .hot-tokens-list button img{
     position: relative;
     display: block;
     width: 20px;
     height: 20px;
   }
 
-  .popup-middle.saved-coins button p{
+  .popup-middle .hot-tokens-list button p{
     position: relative;
     display: block;
     font: 400 16px/20px 'Gabarito', sans-serif;
@@ -695,6 +705,7 @@ button.swap_btn {
   align-items:center;
   width:100%;
   margin-bottom: 18px;
+  cursor:pointer;
 }
 
 .coins-lists .coins-list img{

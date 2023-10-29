@@ -56,10 +56,70 @@ function toggleTheme(value = false){
   }
 }
 
+  let allTokens = [
+    {symbol:"ETH",name:"Ether",decimals:18,img:"./assets/coins/eth.png",address:"-",hot:true},
+    {symbol:"WETH",name:"Wrapped Ether",decimals:18,img:"./assets/coins/weth.png",address:"0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",hot:true},
+    {symbol:"1INCH",name:"1inch",decimals:18,img:"./assets/coins/1inch.png",address:"0x111111111117dC0aa78b770fA6A738034120C302"},
+    {symbol:"AAVE",name:"Aave",decimals:18,img:"./assets/coins/aave.svg",address:"0x7Fc66500c84A76Ad7e9c93437bFc5Ac33E2DDaE9"},
+    {symbol:"ABT",name:"Arcblock",decimals:18,img:"./assets/coins/abt.webp",address:"0xB98d4C97425d9908E66E53A6fDf673ACcA0BE986"},
+    {symbol:"ACH",name:"Alchemy Pay",decimals:8,img:"./assets/coins/ach.webp",address:"0xEd04915c23f00A313a544955524EB7DBD823143d"},
+    {symbol:"ADX",name:"Ambire AdEx",decimals:18,img:"./assets/coins/adx.png",address:"0xADE00C28244d5CE17D72E40330B1c318cD12B7c3"},
+    {symbol:"AERGO",name:"Aergo",decimals:18,img:"./assets/coins/aergo.png",address:"0x91Af0fBB28ABA7E31403Cb457106Ce79397FD4E6"},
+    {symbol:"DAI",name:"Dai Stablecoin",decimals:18,img:"./assets/coins/dai.png",address:"0x6B175474E89094C44Da98b954EedeAC495271d0F",hot:true},
+    {symbol:"USDC",name:"USDC",decimals:18,img:"./assets/coins/usdc.png",address:"0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",hot:true},
+    {symbol:"USDT",name:"Tether USD",decimals:6,img:"./assets/coins/usdt.png",address:"0xdAC17F958D2ee523a2206206994597C13D831ec7",hot:true},
+    {symbol:"WBTC",name:"Wrapped BTC",decimals:8,img:"./assets/coins/wbtc.png",address:"0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",hot:true}
+  ]
+
+
+  const renderHotTokens = async(filterString = "") =>{
+    try {
+      let _tokens = allTokens.filter(i=> !!i.hot).map((token,i)=>{
+        let{name,symbol,address,img } = token;
+        return `<button><img src=${img} key=${address}><p>${symbol}</p></button>`
+      })
+
+      $(".popup .popup-body .popup-middle .hot-tokens-list").html(_tokens)
+
+    } catch (e) {
+      console.log(e);
+    }
+  }
+  const renderTokens = async(filterString = "") =>{
+    try {
+      let _tokens = allTokens.filter((data,i)=>{
+        let{name,symbol,address } = data;
+        if (filterString) {
+          let _index = name.toUpperCase().search(filterString);
+          _index = _index !== -1?_index:symbol.toUpperCase().search(filterString);
+          _index = _index !== -1?_index:address.toUpperCase().search(filterString);
+          return _index !== -1?data:null;
+        }else {
+          return data;
+        }
+      }).map((token,i)=>{
+        let{name,symbol,address,img } = token;
+
+        return `<div class="coins-list active" key=${address}>
+          <img src=${img}>
+          <div class="coin-details"><p>${name}</p><span>${symbol}</span></div>
+          <svg width="800px" height="800px" fill="none" viewBox="0 -0.5 25 25" ><path d="M5.5 12.5L10.167 17L19.5 8" /></svg>
+        </div>`
+      })
+
+      $(".popup .popup-body .popup-last .coins-lists").html(_tokens)
+
+    } catch (e) {
+      console.log(e);
+    }
+  }
 
 
 $(".coin_list_select").click(function(){
   $(".popup").show();
+  renderHotTokens()
+  renderTokens()
+
 })
 
 $("#close-btn").click(function(){
