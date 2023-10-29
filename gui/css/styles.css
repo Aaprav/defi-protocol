@@ -146,6 +146,9 @@ body::-webkit-scrollbar-thumb {
     }
   }
 
+  @media(max-width : 576px){
+
+  }
   /*==============================
   	        theme switch
   ==============================*/
@@ -229,6 +232,8 @@ input#theme-toggle-input:checked + .theme-toggle svg.moon {
     align-items:center;
     width: 100%;
   }
+
+
 
   .swap_wrapper{
     --c1 : var(--border-color);
@@ -320,7 +325,7 @@ input#theme-toggle-input:checked + .theme-toggle svg.moon {
     display: block;
     background: var(--base-light);
     border-radius: 15px;
-    padding: 10px 15px;
+    padding: 10px 20px;
     margin: 0;
     &:last-child{
       margin-top: 4px;
@@ -334,11 +339,11 @@ input#theme-toggle-input:checked + .theme-toggle svg.moon {
     position: relative;
     display: block;
     font: 400 15px/22px 'Gabarito', sans-serif;
-    margin: 0 0 5px 8px;
+    margin: 0 0 5px 0;
     color: var(--text-col-4);
     cursor: pointer;
     &:last-child{
-      margin: 5px 0 0 8px;
+      margin: 5px 0 0 0;
       cursor: text;
     }
   }
@@ -360,7 +365,7 @@ input#theme-toggle-input:checked + .theme-toggle svg.moon {
     background: transparent;
     flex-shrink: 1;
     color: var(--text-col-2);
-    padding: 5px 8px;
+    padding: 5px 8px 5px 0;
 
     &::placeholder{
       color: var(--text-col-3);
@@ -428,8 +433,6 @@ input#theme-toggle-input:checked + .theme-toggle svg.moon {
     fill: var(--text-col-2);
   }
 
-
-
   .swap_input_toggle{
     position: absolute;
     display: flex;
@@ -491,7 +494,82 @@ button.swap_btn {
 
 
 
+@media(max-width : 576px){
+  .swap_wrapper{
+    border-radius: 16px;
+    margin: 50px 0 0;
+    box-shadow: 0 0 20px 0 var(--shadow-color);
+    width: calc(100% - 30px);
+    &::before {
+      border-radius: 15px;
+    }
+  }
+  .swap_wrapper .swap_menu{
+    padding: 0 10px 12px;
+  }
 
+  .swap_wrapper .swap_input_area{
+    border-radius: 10px;
+    padding: 10px 15px;
+  }
+
+  .swap_wrapper .swap_input_area .swap_input_section input{
+    font: 400 35px/40px 'Gabarito', sans-serif;
+    padding: 3px 5px 3px 0;
+  }
+
+  .coin_list_select{
+    border-radius: 30px;
+  }
+
+  .coin_list_select img{
+    width: 18px;
+    height: 18px;
+  }
+
+  .coin_list_select p{
+    font: 400 16px/20px 'Gabarito', sans-serif;
+    margin: 0 0 0 4px;
+  }
+
+  .coin_list_select svg{
+    width: 12px;
+    height: 12px;
+    margin: 0 2px 0 5px;
+  }
+
+  .swap_input_toggle{
+    width: 26px;
+    height: 26px;
+    border-radius: 6px;
+    top: calc(50% - 13px);
+    left: calc(50% - 13px);
+    &:hover{
+      box-shadow: inset 0 0 3px var(--text-col-5);
+    }
+  }
+  .swap_input_toggle svg{
+    height: 18px;
+  }
+
+  button.swap_btn {
+    border-radius: 10px;
+    font: 400 18px/22px 'Gabarito', sans-serif;
+    margin: 8px 0 0 0;
+    padding: 10px 30px;
+  }
+}
+
+@media(max-width : 280px){
+  .swap_wrapper .swap_input_area .swap_input_section{
+    flex-wrap: wrap;
+  }
+  .coin_list_select{
+    border-radius: 0;
+    width: 100%;
+    margin: 10px 0;
+  }
+}
 
 /*==============================
 	 Token select popup styles

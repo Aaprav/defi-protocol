@@ -71,8 +71,10 @@ function toggleTheme(value = false){
     {symbol:"WBTC",name:"Wrapped BTC",decimals:8,img:"./assets/coins/wbtc.png",address:"0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",hot:true}
   ]
 
-  let tokenA = {address:"-",balance:0}
-  let tokenB = {address:"",balance:0}
+  let tokenA = {address:"-",balance:0};
+  let tokenB = {address:"",balance:0};
+
+  
   const updateTokenAddress = (switchId,address) => {
     switchId == "A"?(tokenA.address = address):(tokenB.address = address);
     let _filterString = $(".token-input").val();
