@@ -1,13 +1,13 @@
-//
-// const shortAddress = (address)=>{
-//   if(!address) return "No Address";
-//   if(address === "0x0000000000000000000000000000000000000000") return "Null Address"
-//   return "0x..."+address.substring(address.length - 5, address.length);
-// }
-//
-//
-//
-//
+
+const shortAddress = (address)=>{
+  if(!address) return "No Address";
+  if(address === "0x0000000000000000000000000000000000000000") return "Null Address"
+  return "0x..."+address.substring(address.length - 5, address.length);
+}
+
+
+
+
 // constructor(props){
 //   super(props)
 //   this.state = {
