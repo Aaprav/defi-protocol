@@ -26,7 +26,7 @@ let DOM_CONNECT_WALLET = document.getElementById("connectWallet");
     }
   }
 
-  
+
   let handleAccountsChanged = (accounts) => {
 
     // Handle the new accounts, or lack thereof.
@@ -55,6 +55,7 @@ let DOM_CONNECT_WALLET = document.getElementById("connectWallet");
   }
 
 
+
 let handleConnectWallet = async(val) =>{
   try {
     if (typeof window.ethereum === 'undefined') {
@@ -63,7 +64,6 @@ let handleConnectWallet = async(val) =>{
 
     if(val === "metamask" && !window.ethereum.isMetaMask){
       return setToastAlert('MetaMask is not installed!',"error");
-
     }else if (val === "mathwallet" && !window.ethereum.isMathWallet) {
       return setToastAlert('MathWallet is not installed!',"error");
     }
@@ -102,24 +102,22 @@ let handleConnectWallet = async(val) =>{
 }
 
 
-// componentDidMount(){
-//   let self = this;
-//
-//   let timer = setInterval(function(){
-//       if(typeof window.ethereum !== 'undefined'){
-//         clearInterval(timer)
-//
-//         window.ethereum.request({ method: 'eth_accounts' }).then(self.handleAccountsChanged)
-//         window.ethereum.on('accountsChanged', self.handleAccountsChanged);
-//         window.ethereum.on('chainChanged', self.handleChainChanged);
-//
-//       }
-//   },500)
-// }
+let componentDidMount = () =>{
+  let timer = setInterval(async function(){
+    clearInterval(timer)
+      if(typeof window.ethereum !== 'undefined'){
+        const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+        account = accounts.length?accounts[0]:"";
+        connectWalletGui();
+        window.ethereum.on('accountsChanged', handleAccountsChanged);
+        window.ethereum.on('chainChanged', handleChainChanged);
+      }
+  },2000)
+}
 
 DOM_CONNECT_WALLET.addEventListener('click', ()=>handleConnectWallet("metamask"));
 
-// document.addEventListener("DOMContentLoaded", function() {
-//   // Code to be executed when the DOM is ready
-//   // handleConnectWallet()
-// });
+document.addEventListener("DOMContentLoaded", function() {
+  // Code to be executed when the DOM is ready
+  componentDidMount()
+});
