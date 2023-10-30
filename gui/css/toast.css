@@ -75,6 +75,18 @@
     width: 0%;
   }
 }
+.toast.success::before {
+  background: var(--success);
+}
+.toast.error::before {
+  background: var(--error);
+}
+.toast.warning::before {
+  background: var(--warning);
+}
+.toast.info::before {
+  background: var(--info);
+}
 
 .toast .column i {
   font-size: 1.75rem;
