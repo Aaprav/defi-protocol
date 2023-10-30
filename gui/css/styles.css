@@ -966,14 +966,10 @@ button.swap_btn {
   margin:0;
   width: 30px;
   height: auto;
-  stroke: var(--base-dark);
-  stroke-width : 1.5px;
-  stroke-linecap : round;
-  stroke-linejoin : round;
-  flex-shrink: 0;
+  fill: var(--base-dark);
 }
 .coins-lists .coins-list.active svg{
-  stroke: var(--base-col);
+  fill: var(--base-col);
 }
 
 

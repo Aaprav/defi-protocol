@@ -74,7 +74,7 @@ function toggleTheme(value = false){
   let tokenA = {address:"-",balance:0};
   let tokenB = {address:"",balance:0};
 
-  
+
   const updateTokenAddress = (switchId,address) => {
     switchId == "A"?(tokenA.address = address):(tokenB.address = address);
     let _filterString = $(".token-input").val();
@@ -119,7 +119,7 @@ function toggleTheme(value = false){
         return `<div class="coins-list${_currentAddress == address?" active":""}" onclick="updateTokenAddress('${switchId}','${address}');" key=${address}>
           <img src=${img}>
           <div class="coin-details"><p>${name}</p><span>${symbol}</span></div>
-          <svg width="800px" height="800px" fill="none" viewBox="0 -0.5 25 25" ><path d="M5.5 12.5L10.167 17L19.5 8" /></svg>
+          <svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 24 24" width="24px" height="24px"><path d="M 20.292969 5.2929688 L 9 16.585938 L 4.7070312 12.292969 L 3.2929688 13.707031 L 9 19.414062 L 21.707031 6.7070312 L 20.292969 5.2929688 z"/></svg>
         </div>`
       });
       $(".popup .popup-body .popup-last .coins-lists").html(_tokens)
