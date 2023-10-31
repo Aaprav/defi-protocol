@@ -627,6 +627,12 @@ button.swap_btn {
   }
 }
 
+button.swap_btn p{
+  position: relative;
+  display: block;
+  margin: 0;
+}
+
 
 
 @media(max-width : 576px){
