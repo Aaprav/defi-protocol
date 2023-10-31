@@ -2,6 +2,7 @@ console.clear()
 
 let account = "";
 let DOM_CONNECT_WALLET = document.getElementById("connectWallet");
+let DOM_SWAP_BTN = document.getElementById("swapBtn");
 
 
 
@@ -115,7 +116,7 @@ let componentDidMount = () =>{
   },2000)
 }
 
-DOM_CONNECT_WALLET.addEventListener('click', ()=>handleConnectWallet("metamask"));
+DOM_CONNECT_WALLET.addEventListener('click', ()=> handleConnectWallet("metamask"));
 
 document.addEventListener("DOMContentLoaded", function() {
   // Code to be executed when the DOM is ready

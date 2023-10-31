@@ -10,6 +10,9 @@
   --base-light: #222227;
   --base-col : #32CCBC;
 
+  --base-col1: #16151a;
+  --base-col2 : #fff;
+
   --border-color : #236864;
   --shadow-color : #233135;
 
@@ -149,6 +152,10 @@ button,input{
     &:hover{
       background: var(--bg-btn-hover);
       color: var(--col-btn-hover);
+    }
+    &:disabled{
+      background: var(--bg-btn-hover);
+      color: var(--col-btn);
     }
   }
 

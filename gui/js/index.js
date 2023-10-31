@@ -15,6 +15,8 @@ function toggleTheme(value = false){
 
     document.documentElement.style.setProperty('--base-dark', "#ddd");
     document.documentElement.style.setProperty('--base-light', "#aaa");
+    document.documentElement.style.setProperty('--base-col1', "#fff");
+    document.documentElement.style.setProperty('--base-col2', "#16151a");
 
     document.documentElement.style.setProperty('--border-color', "#2DAB9F");
     document.documentElement.style.setProperty('--shadow-color', "#236864");
@@ -36,6 +38,8 @@ function toggleTheme(value = false){
 
     document.documentElement.style.setProperty('--base-dark', "#16151a");
     document.documentElement.style.setProperty('--base-light', "#222227");
+    document.documentElement.style.setProperty('--base-col1', "#16151a");
+    document.documentElement.style.setProperty('--base-col2', "#fff");
 
     document.documentElement.style.setProperty('--border-color', "#236864");
     document.documentElement.style.setProperty('--shadow-color', "#233135");

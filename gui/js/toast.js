@@ -27,3 +27,9 @@ const setToastAlert = (content="",appearance="warning") => {
     // Setting a timeout to remove the toast after the specified duration
     toast.timeoutId = setTimeout(() => removeToast(toast), 5000);
 }
+
+
+// setToastAlert("Testing toast alert" ,"success");
+// setToastAlert("Testing toast alert","error");
+// setToastAlert("Testing toast alert","warning");
+// setToastAlert("Testing toast alert","info");
