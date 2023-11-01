@@ -526,8 +526,8 @@ input#theme-toggle-input:checked + .theme-toggle svg.moon {
       border-right: 6px solid transparent;
       border-bottom: 10px solid var(--bg-btn);
     }
-    &:hover{
-      &::after{display: block;}
+    &:hover::after{
+      display: block;
     }
   }
   .swap-setting .swap-setting-item .swap-setting-item-title svg{
@@ -549,16 +549,16 @@ input#theme-toggle-input:checked + .theme-toggle svg.moon {
     top: calc(100% + 8px);
     left: 50%;
     transform:translateX(-50%);
-    width: 300px;
-    max-width: calc(100vw - 60px);
+    width: 100%;
     padding:8px 10px;
     margin: 0;
     font: 400 14px/18px 'Gabarito', sans-serif;
     color: var(--text-col-4);
-    text-align:left;
+    text-align: justify;
+    text-justify: inter-word;
   }
 
-  .swap-setting .swap-setting-item .swap-setting-item-title button:hover .swap-setting-tooltip{
+  .swap-setting .swap-setting-item .swap-setting-item-title button:hover + .swap-setting-tooltip{
     display:block;
   }
 
