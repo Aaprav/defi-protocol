@@ -4,17 +4,16 @@ console.clear()
   const Wallet = {
     address:"",
     balance:0,
+    chainId:'0x539',
 
     connectWalletGui : () =>{
       if(Wallet.address){
         DOM_CONNECT_WALLET.innerHTML  = helper.shortAddress(Wallet.address);
         DOM_SWAP_BTN.children[0].innerHTML  = "Swap Now";
-        DOM_CONNECT_WALLET.disabled = true;
         DOM_SWAP_BTN.disabled = false;
       }else {
         DOM_CONNECT_WALLET.innerHTML  = "Connect Wallet";
         DOM_SWAP_BTN.children[0].innerHTML  = "Connect Wallet";
-        DOM_CONNECT_WALLET.disabled = false;
         DOM_SWAP_BTN.disabled = true;
       }
     },
@@ -41,7 +40,7 @@ console.clear()
       // Handle the new chain.
       // Correctly handling chain changes can be complicated.
       // We recommend reloading the page unless you have good reason not to.
-      if(chainId !== '0x1'){
+      if(chainId !== Wallet.chainId){
         Wallet.address = "";
         setToastAlert('Chain Disconnected',"warning");
         Wallet.connectWalletGui();
@@ -53,7 +52,6 @@ console.clear()
    isBtnClicked:false,
    handleConnectWallet : async(val) =>{
     try {
-      if(Wallet.address) return;
       if(Wallet.isBtnClicked) return setToastAlert('Please wait while we proccess',"info");
       Wallet.isBtnClicked = true;
 
@@ -62,17 +60,33 @@ console.clear()
       }
 
       await new Promise(async(resolve,reject) =>{
-        if(window.ethereum.chainId === "0x1"){
+        if(!Wallet.address){
+          resolve()
+        }else {
+          try {
+            await window.ethereum.request({
+              method: 'wallet_requestPermissions',
+              params: [{ eth_accounts: {} }]
+            });
+            resolve()
+          } catch (e) {
+            reject(e)
+          }
+        }
+      })
+
+      await new Promise(async(resolve,reject) =>{
+        if(window.ethereum.chainId === Wallet.chainId){
           resolve()
         }else {
           try {
             await window.ethereum.request({
               method: 'wallet_switchEthereumChain',
-              params : [{ chainId: '0x1' }] // chainId must be in hexadecimal numbers,
+              params : [{ chainId: Wallet.chainId }] // chainId must be in hexadecimal numbers,
             })
             resolve()
           } catch (e) {
-            reject({message:"Please change chain in your wallet"})
+            reject(e)
           }
         }
       })
@@ -82,6 +96,7 @@ console.clear()
       Wallet.handleAccountsChanged(accounts);
 
       if(!Wallet.watcherInjected){
+        Wallet.watcherInjected = true;
         window.ethereum.on('accountsChanged', Wallet.handleAccountsChanged);
         window.ethereum.on('chainChanged', Wallet.handleChainChanged);
       }
@@ -102,7 +117,7 @@ console.clear()
           _iteration += 1;
           if(typeof window.ethereum !== 'undefined'){
             clearInterval(timer);
-            if(window.ethereum.chainId !== "0x1") {
+            if(window.ethereum.chainId !== Wallet.chainId) {
               Wallet.initInjected = false;
             }else {
               try {
@@ -110,6 +125,7 @@ console.clear()
                 Wallet.address = accounts.length?accounts[0]:"";
                 Wallet.connectWalletGui();
                 if(!Wallet.watcherInjected){
+                  Wallet.watcherInjected = true;
                   window.ethereum.on('accountsChanged', Wallet.handleAccountsChanged);
                   window.ethereum.on('chainChanged', Wallet.handleChainChanged);
                 }
