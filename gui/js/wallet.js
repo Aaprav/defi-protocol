@@ -19,7 +19,8 @@ console.clear()
     },
 
     setAddress : (address) => {
-      Wallet.address = address
+      if(Wallet.address == address) return;
+      Wallet.address = address;
     },
     getAddress : (callback)=>{
       let _address = Wallet.address;
