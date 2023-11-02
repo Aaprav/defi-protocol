@@ -18,23 +18,23 @@
 
   let tokenA = {address:"-",value:0};
   let tokenB = {address:"",value:0};
+  let switchId = "A";
 
-
-  const updateTokenAddress = (switchId,address) => {
+  const updateTokenAddress = (address) => {
     switchId == "A"?(tokenA.address = address):(tokenB.address = address);
-    let _filterString = $(".token-input").val();
-    renderHotTokens(switchId,_filterString);
-    renderTokens(switchId,_filterString);
+    let _filterString = DOM_TOKEN_INPUT.value.toUpperCase();
+    renderHotTokens();
+    renderTokens(_filterString);
   }
 
-  const renderHotTokens = async(switchId = "A",filterString = "") =>{
+  const renderHotTokens = async() =>{
     try {
       let _oppositeAddress = (switchId == "B"?tokenA:tokenB).address || "";
       let _currentAddress = (switchId == "A"?tokenA:tokenB).address || "";
 
       let _tokens = allTokens.filter(i=> !!i.hot && i.address != _oppositeAddress).map((token,i)=>{
         let{name,symbol,address,img } = token;
-        return `<button onclick="updateTokenAddress('${switchId}','${address}');" key=${address}><img src=${img}><p>${symbol}</p></button>`
+        return `<button onclick="updateTokenAddress('${address}');"><img src=${img}><p>${symbol}</p></button>`
       });
       $(".popup .popup-body .popup-middle .hot-tokens-list").html(_tokens)
     } catch (e) {
@@ -42,7 +42,7 @@
     }
   }
 
-  const renderTokens = async(switchId = "A",filterString = "") =>{
+  const renderTokens = async(filterString = "") =>{
     try {
       let _oppositeAddress = (switchId == "B"?tokenA:tokenB).address || "";
       let _currentAddress = (switchId == "A"?tokenA:tokenB).address || "";
@@ -59,9 +59,11 @@
         }else {
           return data;
         }
-      }).map((token,i)=>{
+      });
+
+      _tokens = (_tokens.length?_tokens:allTokens).map((token,i)=>{
         let{name,symbol,address,img } = token;
-        return `<div class="coins-list${_currentAddress == address?" active":""}" onclick="updateTokenAddress('${switchId}','${address}');" key=${address}>
+        return `<div class="coins-list${_currentAddress == address?" active":""}" onclick="updateTokenAddress('${address}');"J>
           <img src=${img}>
           <div class="coin-details"><p>${name}</p><span>${symbol}</span></div>
           <svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 24 24" width="24px" height="24px"><path d="M 20.292969 5.2929688 L 9 16.585938 L 4.7070312 12.292969 L 3.2929688 13.707031 L 9 19.414062 L 21.707031 6.7070312 L 20.292969 5.2929688 z"/></svg>
@@ -96,13 +98,15 @@ const renderSwitch = () =>{
 
 $("#select-token-A").click(function(){
   $(".popup").show();
-  renderHotTokens("A");
-  renderTokens("A");
+  switchId = "A";
+  renderHotTokens();
+  renderTokens();
 })
 $("#select-token-B").click(function(){
   $(".popup").show();
-  renderHotTokens("B");
-  renderTokens("B");
+  switchId = "B";
+  renderHotTokens();
+  renderTokens();
 })
 
 
@@ -111,6 +115,10 @@ $("#close-btn").click(function(){
   renderSwitch()
 })
 
+  DOM_TOKEN_INPUT.addEventListener("input", function(e) {
+    let value = e.target.value;
+    renderTokens(value.toUpperCase());
+  });
 
 $(".swap_input_toggle").click(function(){
   let _tokenA = tokenA;

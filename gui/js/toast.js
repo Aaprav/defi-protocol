@@ -21,7 +21,7 @@ const setToastAlert = (content="",appearance="warning") => {
                          <span>${content}</span>
                       </div>
                       <i class="fa-solid fa-xmark" onclick="removeToast(this.parentElement)"></i>`;
-    NOTIFICATIONS.appendChild(toast); // Append the toast to the notification ul
+    DOM_NOTIFICATIONS.appendChild(toast); // Append the toast to the notification ul
     // Setting a timeout to remove the toast after the specified duration
     toast.timeoutId = setTimeout(() => removeToast(toast), 5000);
 }
