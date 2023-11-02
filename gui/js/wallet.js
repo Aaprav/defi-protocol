@@ -4,7 +4,7 @@ console.clear()
   const Wallet = {
     address:"",
     balance:0,
-    chainId:'0x539',
+    chainId:'0x1',// '0x539'
 
     connectWalletGui : () =>{
       if(Wallet.address){
@@ -18,9 +18,22 @@ console.clear()
       }
     },
 
+    setAddress : (address) => {
+      Wallet.address = address
+    },
+    getAddress : (callback)=>{
+      let _address = Wallet.address;
+      callback(null,_address);
+      setInterval(function () {
+        if (_address !== Wallet.address) {
+          _address = Wallet.address;
+          callback(null,_address)
+        }
+      }, 2000);
+    },
 
     handleAccountsChanged : (accounts) => {
-
+      console.log(accounts);
       // Handle the new accounts, or lack thereof.
       // "accounts" will always be an array, but it can be empty.
       let _address = accounts.length?accounts[0]:"";
@@ -32,7 +45,7 @@ console.clear()
       }else if(!!_address && _address != Wallet.address) {
         setToastAlert('Wallet Changed',"info");
       }
-      Wallet.address = _address;
+      Wallet.setAddress(_address);
       Wallet.connectWalletGui();
     },
 
@@ -41,7 +54,7 @@ console.clear()
       // Correctly handling chain changes can be complicated.
       // We recommend reloading the page unless you have good reason not to.
       if(chainId !== Wallet.chainId){
-        Wallet.address = "";
+        Wallet.setAddress("")
         setToastAlert('Chain Disconnected',"warning");
         Wallet.connectWalletGui();
       }
@@ -121,8 +134,8 @@ console.clear()
               Wallet.initInjected = false;
             }else {
               try {
-                const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
-                Wallet.address = accounts.length?accounts[0]:"";
+                const accounts = await window.ethereum.request({ method: 'eth_accounts' });
+                Wallet.setAddress(accounts.length?accounts[0]:"");
                 Wallet.connectWalletGui();
                 if(!Wallet.watcherInjected){
                   Wallet.watcherInjected = true;
