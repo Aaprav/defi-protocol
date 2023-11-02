@@ -33,7 +33,6 @@ console.clear()
     },
 
     handleAccountsChanged : (accounts) => {
-      console.log(accounts);
       // Handle the new accounts, or lack thereof.
       // "accounts" will always be an array, but it can be empty.
       let _address = accounts.length?accounts[0]:"";
