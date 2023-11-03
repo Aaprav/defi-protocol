@@ -20,6 +20,7 @@
   let tokenB = {address:"",value:0};
   let switchId = "A";
 
+
   const updateTokenAddress = (address) => {
     switchId == "A"?(tokenA.address = address):(tokenB.address = address);
     let _filterString = DOM_TOKEN_INPUT.value.toUpperCase();
@@ -36,7 +37,7 @@
         let{name,symbol,address,img } = token;
         return `<button onclick="updateTokenAddress('${address}');"><img src=${img}><p>${symbol}</p></button>`
       });
-      $(".popup .popup-body .popup-middle .hot-tokens-list").html(_tokens)
+      DOM_POPUP.children[0].children[1].children[1].innerHTML = _tokens.join("");
     } catch (e) {
       console.log(e);
     }
@@ -69,60 +70,58 @@
           <svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 24 24" width="24px" height="24px"><path d="M 20.292969 5.2929688 L 9 16.585938 L 4.7070312 12.292969 L 3.2929688 13.707031 L 9 19.414062 L 21.707031 6.7070312 L 20.292969 5.2929688 z"/></svg>
         </div>`
       });
-      $(".popup .popup-body .popup-last .coins-lists").html(_tokens)
+      DOM_POPUP.children[0].children[2].children[0].innerHTML = _tokens.join("");
     } catch (e) {
       console.log(e);
     }
   }
 
 
-const renderSwitch = () =>{
-  let _TA = $("#select-token-A .coin_list_select_inner");
-  let _TB = $("#select-token-B .coin_list_select_inner");
+  const renderSwitch = () =>{
+    if(!tokenA.address ){
+      DOM_COIN_SWITCH_A.children[0].innerHTML = `<p>Select a token</p>`;
+    }else {
+      let _t = allTokens.find(i=>i.address == tokenA.address);
+      DOM_COIN_SWITCH_A.children[0].innerHTML = `<img src=${_t.img}><p>${_t.symbol}</p>`;
+    }
 
-  if(!tokenA.address ){
-    _TA.html(`<div class="coin_list_select_inner"><p>Select a token</p></div>`)
-  }else {
-    let _t = allTokens.find(i=>i.address == tokenA.address);
-    _TA.html(`<div class="coin_list_select_inner"><img src=${_t.img}><p>${_t.symbol}</p></div>`)
+    if(!tokenB.address ){
+      DOM_COIN_SWITCH_B.children[0].innerHTML = `<div class="coin_list_select_inner"><p>Select a token</p></div>`;
+    }else {
+      let _t = allTokens.find(i=>i.address == tokenB.address);
+      DOM_COIN_SWITCH_B.children[0].innerHTML = `<div class="coin_list_select_inner"><img src=${_t.img}><p>${_t.symbol}</p></div>`;
+    }
   }
 
-  if(!tokenB.address ){
-    _TB.html(`<div class="coin_list_select_inner"><p>Select a token</p></div>`)
-  }else {
-    let _t = allTokens.find(i=>i.address == tokenB.address);
-    _TB.html(`<div class="coin_list_select_inner"><img src=${_t.img}><p>${_t.symbol}</p></div>`)
-  }
-}
+  DOM_COIN_SWITCH_A.addEventListener("click", function(e) {
+    DOM_POPUP.style.display = 'block';
+    switchId = "A";
+    renderHotTokens();
+    renderTokens();
+  });
 
 
-$("#select-token-A").click(function(){
-  $(".popup").show();
-  switchId = "A";
-  renderHotTokens();
-  renderTokens();
-})
-$("#select-token-B").click(function(){
-  $(".popup").show();
-  switchId = "B";
-  renderHotTokens();
-  renderTokens();
-})
+  DOM_COIN_SWITCH_B.addEventListener("click", function(e) {
+    DOM_POPUP.style.display = 'block';
+    switchId = "B";
+    renderHotTokens();
+    renderTokens();
+  });
 
-
-$("#close-btn").click(function(){
-  $(".popup").hide();
-  renderSwitch()
-})
+  DOM_POPUP_CLOSE.addEventListener("click", function(e) {
+    DOM_POPUP.style.display = 'none';
+    switchId = "";
+    renderSwitch();
+  });
 
   DOM_TOKEN_INPUT.addEventListener("input", function(e) {
     let value = e.target.value;
     renderTokens(value.toUpperCase());
   });
 
-$(".swap_input_toggle").click(function(){
-  let _tokenA = tokenA;
-  tokenA = tokenB;
-  tokenB = _tokenA;
-  renderSwitch()
-})
+  DOM_TOGGLE_INPUTS.addEventListener("click", function(e) {
+    let _tokenA = tokenA;
+    tokenA = tokenB;
+    tokenB = _tokenA;
+    renderSwitch()
+  });

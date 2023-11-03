@@ -477,7 +477,6 @@ input#theme-toggle-input:checked + .theme-toggle svg.moon {
       display: block;
     }
   }
-  .swap_wrapper .swap_menu button.swap_item:hover + .swap-setting,
   .swap_wrapper .swap_menu button.swap_item:focus + .swap-setting{
     display:block;
   }
