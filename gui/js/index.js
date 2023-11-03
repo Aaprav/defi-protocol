@@ -19,6 +19,53 @@
   let tokenA = {address:"-",value:0};
   let tokenB = {address:"",value:0};
   let switchId = "A";
+  let slippage = 0;
+  let deadline = 0;
+
+
+  DOM_SLIPPAGE_INPUT.addEventListener("input", function(e) {
+    let value = e.target.value;
+
+    let _parentElement = this.parentElement;
+    if(value == "0"){
+      _parentElement.style.borderColor  = "#E9BD0C";
+    }else if (_parentElement.getAttribute("style")) {
+      _parentElement.removeAttribute("style")
+    }
+
+    value = parseFloat(value);
+    if(value > 0 && value <= 200){
+      _parentElement.style.borderColor  = "#0ABF30";
+    }else if (value > 200) {
+      _parentElement.style.borderColor  = "#E9BD0C";
+    }else if (value < 0) {
+      _parentElement.style.borderColor  = "#E24D4C";
+    }
+    slippage = value;
+  });
+
+  DOM_DEADLINE_INPUT.addEventListener("input", function(e) {
+    let value = e.target.value;
+
+    let _parentElement = this.parentElement;
+    if(value == "0"){
+      _parentElement.style.borderColor  = "#E9BD0C";
+    }else if (_parentElement.getAttribute("style")) {
+      _parentElement.removeAttribute("style")
+    }
+
+    value = parseFloat(value);
+    if(value > 0 && value <= 1440){
+      _parentElement.style.borderColor  = "#0ABF30";
+    }else if (value > 1440) {
+      _parentElement.style.borderColor  = "#E9BD0C";
+    }else if (value < 0) {
+      _parentElement.style.borderColor  = "#E24D4C";
+    }
+    deadline = value;
+  });
+
+
 
 
   const updateTokenAddress = (address) => {
