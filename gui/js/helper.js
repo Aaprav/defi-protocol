@@ -1,23 +1,24 @@
 
 
-  const helper = {
+  const Helper = {
     Zero_address: "T9yD14Nj9j7xAB4dbGeiX9h8unkKHxuWwb",
 
     shortAddress : (address)=>{
       if(!address) return "No Address";
-      if(address === helper.Zero_address) return "Null Address"
+      if(address === Helper.Zero_address) return "Null Address"
       return address.substring(0, 6)+"..."+address.substring(address.length - 4, address.length);
     },
     wait : async(time = 3000) =>await new Promise((resolve)=>setTimeout(resolve, time)),
 
-    sanitize : (val,decimal = 6)=>{
-      val = parseFloat(val);
-      if(isNaN(val) || val < 0) return "";
-        decimal = Math.floor(decimal)
-        if(isNaN(decimal)){
-         decimal = 6;
-        }
-      return Math.floor(val * (10 ** decimal)) / (10 ** decimal);
+    sanitize : (val,decimal)=>{
+      let _value = parseFloat(val);
+      if(isNaN(_value) || _value < 0) return "";
+      if (val.slice(-1) == ".") return _value+".";
+
+      decimal = Math.floor(decimal)
+      if(isNaN(decimal)) decimal = 6;
+
+      return Math.trunc(_value * (10 ** decimal)) / (10 ** decimal);
     },
     floor : (val,decimal = 6)=>{
       val = parseFloat(val);

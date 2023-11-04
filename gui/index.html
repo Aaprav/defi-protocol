@@ -82,11 +82,11 @@
         </div>
 
         <div class="swap_input_tab">
-          <div class="swap_input_area">
+          <div class="swap_input_area" id="swap-input">
             <p class="swap_input_area_text">You pay</p>
             <div class="swap_input_section">
-              <input type="number" placeholder="0">
-              <div class="coin_list_select" id="select-token-A">
+              <input type="text" placeholder="0">
+              <div class="coin_list_select">
                 <div class="coin_list_select_inner">
                   <img src="./assets/coins/eth.png">
                   <p>ETH</p>
@@ -100,11 +100,11 @@
           <div class="swap_input_toggle">
             <svg width="16" height="16" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"></line><polyline points="19 12 12 19 5 12"></polyline></svg>
           </div>
-          <div class="swap_input_area" >
+          <div class="swap_input_area" id="swap-output">
             <p class="swap_input_area_text">You receive</p>
             <div class="swap_input_section">
-              <input type="number" placeholder="0">
-              <div class="coin_list_select" id="select-token-B">
+              <input type="text" placeholder="0">
+              <div class="coin_list_select">
                 <div class="coin_list_select_inner">
                   <p>Select a token</p>
                 </div>
@@ -125,7 +125,7 @@
         <div class="popup-body">
           <div class="popup-head">
             <p>Select a token</p>
-            <span id="close-btn">
+            <span>
               <svg width="32" height="32" version="1.1" viewBox="0 0 32 32.004" xmlns="http://www.w3.org/2000/svg">
                <path d="m4.3624 4.0919e-4c-0.37222 0-0.74485 0.14179-1.0285 0.42618l-2.9094 2.9094c-0.56879 0.56879-0.56879 1.4897 0 2.057l10.609 10.609-10.609 10.609c-0.56879 0.56879-0.56879 1.4897 0 2.057l2.9094 2.9094c0.56879 0.56879 1.4897 0.56879 2.057 0l10.609-10.609 10.609 10.609c0.56733 0.56879 1.4897 0.56879 2.057 0l2.9094-2.9094c0.56879-0.56879 0.56879-1.4897 0-2.057l-10.609-10.609 10.609-10.609c0.56879-0.56733 0.56879-1.4897 0-2.057l-2.9094-2.9094c-0.56879-0.56879-1.4897-0.56879-2.057 0l-10.609 10.609-10.609-10.609c-0.28439-0.28439-0.6563-0.42618-1.0285-0.42618z" stroke-width="3.3338"/>
               </svg>

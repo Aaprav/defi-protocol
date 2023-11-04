@@ -8,7 +8,7 @@
 
     connectWalletGui : () =>{
       if(Wallet.address){
-        DOM_CONNECT_WALLET.innerHTML  = helper.shortAddress(Wallet.address);
+        DOM_CONNECT_WALLET.innerHTML  = Helper.shortAddress(Wallet.address);
         DOM_SWAP_BTN.children[0].innerHTML  = "Swap Now";
         DOM_SWAP_BTN.disabled = false;
       }else {

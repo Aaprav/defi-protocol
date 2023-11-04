@@ -25,8 +25,29 @@
     output_value : 0,
     slippage : 0,
     deadline : 0,
+    mode : "sell",
   }
 
+  DOM_INPUT_VALUE.addEventListener("input", function(e) {
+    e.preventDefault();
+    let val = e.target.value;
+    Swap.input_value = Helper.floor(val);
+    this.value = Helper.sanitize(val);
+    DOM_OUTPUT_VALUE.value = "";
+    output_value = 0;
+    Swap.mode = "sell";
+    // TODO: output calculate
+  });
+  DOM_OUTPUT_VALUE.addEventListener("input", function(e) {
+    e.preventDefault();
+    let val = e.target.value;
+    Swap.output_value = Helper.floor(val);
+    this.value = Helper.sanitize(val);
+    DOM_INPUT_VALUE.value = "";
+    input_value = 0;
+    Swap.mode = "buy";
+    // TODO: input calculate
+  });
 
   DOM_SLIPPAGE_INPUT.addEventListener("input", function(e) {
     let value = e.target.value;
@@ -131,21 +152,22 @@
 
   const renderSwitch = () =>{
     if(!Swap.input ){
-      DOM_COIN_SWITCH_A.children[0].innerHTML = `<p>Select a token</p>`;
+      DOM_INPUT_SWITCH.children[0].innerHTML = `<p>Select a token</p>`;
     }else {
       let _t = allTokens.find(i=>i.address == Swap.input);
-      DOM_COIN_SWITCH_A.children[0].innerHTML = `<img src=${_t.img}><p>${_t.symbol}</p>`;
+      DOM_INPUT_SWITCH.children[0].innerHTML = `<img src=${_t.img}><p>${_t.symbol}</p>`;
     }
 
     if(!Swap.output ){
-      DOM_COIN_SWITCH_B.children[0].innerHTML = `<div class="coin_list_select_inner"><p>Select a token</p></div>`;
+      DOM_OUTPUT_SWITCH.children[0].innerHTML = `<div class="coin_list_select_inner"><p>Select a token</p></div>`;
     }else {
       let _t = allTokens.find(i=>i.address == Swap.output);
-      DOM_COIN_SWITCH_B.children[0].innerHTML = `<div class="coin_list_select_inner"><img src=${_t.img}><p>${_t.symbol}</p></div>`;
+      DOM_OUTPUT_SWITCH.children[0].innerHTML = `<div class="coin_list_select_inner"><img src=${_t.img}><p>${_t.symbol}</p></div>`;
     }
   }
 
-  DOM_COIN_SWITCH_A.addEventListener("click", function(e) {
+
+  DOM_INPUT_SWITCH.addEventListener("click", function(e) {
     DOM_POPUP.style.display = 'block';
     switchId = "A";
     renderHotTokens();
@@ -153,7 +175,7 @@
   });
 
 
-  DOM_COIN_SWITCH_B.addEventListener("click", function(e) {
+  DOM_OUTPUT_SWITCH.addEventListener("click", function(e) {
     DOM_POPUP.style.display = 'block';
     switchId = "B";
     renderHotTokens();
@@ -164,6 +186,14 @@
     DOM_POPUP.style.display = 'none';
     switchId = "";
     renderSwitch();
+    if (Swap.mode = "sell") {
+      Swap.output_value = 0;
+      DOM_OUTPUT_VALUE.value = "";
+    }else {
+      Swap.input_value = 0;
+      DOM_INPUT_VALUE.value = "";
+    }
+    // TODO: output calculate
   });
 
   DOM_TOKEN_INPUT.addEventListener("input", function(e) {
@@ -175,7 +205,12 @@
     let _input = Swap.input;
     Swap.input = Swap.output;
     Swap.output = _input;
+
     Swap.input_value = Swap.output_value;
     Swap.output_value = 0;
-    renderSwitch()
+    DOM_INPUT_VALUE.value = Swap.input_value || "";
+    DOM_OUTPUT_VALUE.value = "";
+
+    renderSwitch();
+    // TODO: output calculate
   });
