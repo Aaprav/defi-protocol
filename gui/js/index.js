@@ -16,11 +16,16 @@
     {symbol:"WBTC",name:"Wrapped BTC",decimals:8,img:"./assets/coins/wbtc.png",address:"0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",hot:true}
   ]
 
-  let tokenA = {address:"-",value:0};
-  let tokenB = {address:"",value:0};
   let switchId = "A";
-  let slippage = 0;
-  let deadline = 0;
+
+  const Swap = {
+    input : "-",
+    input_value : 0,
+    output : "",
+    output_value : 0,
+    slippage : 0,
+    deadline : 0,
+  }
 
 
   DOM_SLIPPAGE_INPUT.addEventListener("input", function(e) {
@@ -41,7 +46,7 @@
     }else if (value < 0) {
       _parentElement.style.borderColor  = "#E24D4C";
     }
-    slippage = value;
+    Swap.slippage = value;
   });
 
   DOM_DEADLINE_INPUT.addEventListener("input", function(e) {
@@ -62,14 +67,14 @@
     }else if (value < 0) {
       _parentElement.style.borderColor  = "#E24D4C";
     }
-    deadline = value;
+    Swap.deadline = value;
   });
 
 
 
 
   const updateTokenAddress = (address) => {
-    switchId == "A"?(tokenA.address = address):(tokenB.address = address);
+    switchId == "A"?(Swap.input = address):(Swap.output = address);
     let _filterString = DOM_TOKEN_INPUT.value.toUpperCase();
     renderHotTokens();
     renderTokens(_filterString);
@@ -77,8 +82,8 @@
 
   const renderHotTokens = async() =>{
     try {
-      let _oppositeAddress = (switchId == "B"?tokenA:tokenB).address || "";
-      let _currentAddress = (switchId == "A"?tokenA:tokenB).address || "";
+      let _oppositeAddress = switchId == "B"?Swap.input:Swap.output;
+      let _currentAddress = switchId == "A"?Swap.input:Swap.output;
 
       let _tokens = allTokens.filter(i=> !!i.hot && i.address != _oppositeAddress).map((token,i)=>{
         let{name,symbol,address,img } = token;
@@ -92,8 +97,8 @@
 
   const renderTokens = async(filterString = "") =>{
     try {
-      let _oppositeAddress = (switchId == "B"?tokenA:tokenB).address || "";
-      let _currentAddress = (switchId == "A"?tokenA:tokenB).address || "";
+      let _oppositeAddress = switchId == "B"?Swap.input:Swap.output;
+      let _currentAddress = switchId == "A"?Swap.input:Swap.output;
 
       let _tokens = allTokens.filter((data,i)=>{
         let{name,symbol,address } = data;
@@ -125,17 +130,17 @@
 
 
   const renderSwitch = () =>{
-    if(!tokenA.address ){
+    if(!Swap.input ){
       DOM_COIN_SWITCH_A.children[0].innerHTML = `<p>Select a token</p>`;
     }else {
-      let _t = allTokens.find(i=>i.address == tokenA.address);
+      let _t = allTokens.find(i=>i.address == Swap.input);
       DOM_COIN_SWITCH_A.children[0].innerHTML = `<img src=${_t.img}><p>${_t.symbol}</p>`;
     }
 
-    if(!tokenB.address ){
+    if(!Swap.output ){
       DOM_COIN_SWITCH_B.children[0].innerHTML = `<div class="coin_list_select_inner"><p>Select a token</p></div>`;
     }else {
-      let _t = allTokens.find(i=>i.address == tokenB.address);
+      let _t = allTokens.find(i=>i.address == Swap.output);
       DOM_COIN_SWITCH_B.children[0].innerHTML = `<div class="coin_list_select_inner"><img src=${_t.img}><p>${_t.symbol}</p></div>`;
     }
   }
@@ -167,8 +172,10 @@
   });
 
   DOM_TOGGLE_INPUTS.addEventListener("click", function(e) {
-    let _tokenA = tokenA;
-    tokenA = tokenB;
-    tokenB = _tokenA;
+    let _input = Swap.input;
+    Swap.input = Swap.output;
+    Swap.output = _input;
+    Swap.input_value = Swap.output_value;
+    Swap.output_value = 0;
     renderSwitch()
   });
