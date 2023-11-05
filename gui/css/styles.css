@@ -1113,6 +1113,42 @@ button.swap_btn p{
     color: var(--text-col-2);
   }
 
+  .popup-middle .hot-tokens-list button.dummy{
+    width:calc(25% - 15px);
+    &:hover{
+      background: var(--text-col-5);
+    }
+  }
+  .popup-middle .hot-tokens-list button.dummy span,
+  .popup-middle .hot-tokens-list button.dummy p{
+    flex-shrink:0;
+    --c1 : #777;
+    --c2 : #888;
+    position: relative;
+    display: block;
+    width: 20px;
+    height: 20px;
+    border-radius : 50%;
+    background: var(--c1);
+    background-image: linear-gradient(135deg,var(--c1), var(--c2));
+    @supports (background:paint(something)){
+      background-image:-webkit-gradient(linear,left top, right top,from(var(--c1)),color-stop(var(--c2)),color-stop(var(--c2)),to(var(--c1)));
+      background-image:-o-linear-gradient(left,var(--c1) var(--distance),var(--c2) calc(var(--distance) + 5%),var(--c2) calc(var(--distance) + 10%),var(--c1) calc(var(--distance) + 15%));
+      background-image:linear-gradient(135deg,var(--c1) var(--distance),var(--c2) calc(var(--distance) + 5%),var(--c2) calc(var(--distance) + 10%),var(--c1) calc(var(--distance) + 15%));
+      background-image:linear-gradient(135deg,var(--c1) var(--distance),var(--c2) calc(var(--distance) + 5%),var(--c2) calc(var(--distance) + 10%),var(--c1) calc(var(--distance) + 15%));
+      -webkit-animation: 1.3s move-forward linear infinite normal;
+      animation: 1.3s move-forward linear infinite normal;
+    }
+  }
+  .popup-middle .hot-tokens-list button.dummy p{
+    width : 100%;
+    height: 18px;
+    border-radius : 6px;
+    flex-shrink:1;
+  }
+
+
+
 .popup .popup-body .popup-last{
   border: none;
   align-items:flex-start;
@@ -1207,6 +1243,38 @@ button.swap_btn p{
 
 
 
+.coins-lists .coins-list.dummy span,
+.coins-lists .coins-list.dummy .coin-details span,
+.coins-lists .coins-list.dummy .coin-details p{
+  flex-shrink:0;
+  --c1 : #777;
+  --c2 : #888;
+  position: relative;
+  display: block;
+  width: 100px;
+  height: 18px;
+  border-radius : 8px;
+  background: var(--c1);
+  background-image: linear-gradient(135deg,var(--c1), var(--c2));
+  @supports (background:paint(something)){
+    background-image:-webkit-gradient(linear,left top, right top,from(var(--c1)),color-stop(var(--c2)),color-stop(var(--c2)),to(var(--c1)));
+    background-image:-o-linear-gradient(left,var(--c1) var(--distance),var(--c2) calc(var(--distance) + 5%),var(--c2) calc(var(--distance) + 10%),var(--c1) calc(var(--distance) + 15%));
+    background-image:linear-gradient(135deg,var(--c1) var(--distance),var(--c2) calc(var(--distance) + 5%),var(--c2) calc(var(--distance) + 10%),var(--c1) calc(var(--distance) + 15%));
+    background-image:linear-gradient(135deg,var(--c1) var(--distance),var(--c2) calc(var(--distance) + 5%),var(--c2) calc(var(--distance) + 10%),var(--c1) calc(var(--distance) + 15%));
+    -webkit-animation: 1.3s move-forward linear infinite normal;
+    animation: 1.3s move-forward linear infinite normal;
+  }
+}
+.coins-lists .coins-list.dummy .coin-details span{
+  height: 14px;
+  width: 80px;
+}
+.coins-lists .coins-list.dummy span{
+  width: 35px;
+  height: 35px;
+  margin-right: 15px;
+  border-radius : 50%;
+}
 
 @media(max-width : 576px){
   .popup .popup-body{

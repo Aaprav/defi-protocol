@@ -103,6 +103,10 @@
 
   const renderHotTokens = async() =>{
     try {
+      let _dummy = new Array(8).fill(`<button class="dummy"><span>&nbsp;</span><p>&nbsp;</p></button>`)
+      DOM_POPUP.children[0].children[1].children[1].innerHTML = _dummy.join("");
+      await Helper.wait(500);
+
       let _oppositeAddress = switchId == "B"?Swap.input:Swap.output;
       let _currentAddress = switchId == "A"?Swap.input:Swap.output;
 
@@ -118,6 +122,11 @@
 
   const renderTokens = async(filterString = "") =>{
     try {
+
+      let _dummy = new Array(8).fill(`<div class="coins-list dummy"><span>&nbsp;</span><div class="coin-details"><p>&nbsp;</p><span>&nbsp;</span></div></div>`)
+      DOM_POPUP.children[0].children[2].children[0].innerHTML = _dummy.join("");
+      await Helper.wait(500);
+
       let _oppositeAddress = switchId == "B"?Swap.input:Swap.output;
       let _currentAddress = switchId == "A"?Swap.input:Swap.output;
 
