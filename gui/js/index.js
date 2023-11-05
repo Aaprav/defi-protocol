@@ -214,3 +214,8 @@
     renderSwitch();
     // TODO: output calculate
   });
+
+
+  DOM_SWAP_INFO_TOGGLE.addEventListener("click", function(e) {
+    DOM_SWAP_INFO.classList.toggle("active");
+  });

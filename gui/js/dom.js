@@ -25,3 +25,7 @@ const DOM_POPUP = document.querySelector(".popup");
 const DOM_POPUP_CLOSE = DOM_POPUP.children[0].children[0].children[1];
 
 const DOM_TOKEN_INPUT = document.getElementById("token-input");
+
+
+const DOM_SWAP_INFO = document.querySelector(".swap_info");
+const DOM_SWAP_INFO_TOGGLE = DOM_SWAP_INFO.children[0].children[1];
