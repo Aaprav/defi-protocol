@@ -8,7 +8,7 @@
       if(address === Helper.Zero_address) return "Null Address"
       return address.substring(0, 6)+"..."+address.substring(address.length - 4, address.length);
     },
-    wait : async(time = 3000) =>await new Promise((resolve)=>setTimeout(resolve, time)),
+    wait : async(time = 3000) => await new Promise((resolve)=>setTimeout(resolve, time)),
 
     sanitize : (val,decimal)=>{
       let _value = parseFloat(val);

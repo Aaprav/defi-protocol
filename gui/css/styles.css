@@ -1122,8 +1122,8 @@ button.swap_btn p{
   .popup-middle .hot-tokens-list button.dummy span,
   .popup-middle .hot-tokens-list button.dummy p{
     flex-shrink:0;
-    --c1 : #777;
-    --c2 : #888;
+    --c1 : #555;
+    --c2 : #666;
     position: relative;
     display: block;
     width: 20px;
@@ -1133,9 +1133,9 @@ button.swap_btn p{
     background-image: linear-gradient(135deg,var(--c1), var(--c2));
     @supports (background:paint(something)){
       background-image:-webkit-gradient(linear,left top, right top,from(var(--c1)),color-stop(var(--c2)),color-stop(var(--c2)),to(var(--c1)));
-      background-image:-o-linear-gradient(left,var(--c1) var(--distance),var(--c2) calc(var(--distance) + 5%),var(--c2) calc(var(--distance) + 10%),var(--c1) calc(var(--distance) + 15%));
-      background-image:linear-gradient(135deg,var(--c1) var(--distance),var(--c2) calc(var(--distance) + 5%),var(--c2) calc(var(--distance) + 10%),var(--c1) calc(var(--distance) + 15%));
-      background-image:linear-gradient(135deg,var(--c1) var(--distance),var(--c2) calc(var(--distance) + 5%),var(--c2) calc(var(--distance) + 10%),var(--c1) calc(var(--distance) + 15%));
+      background-image:-o-linear-gradient(left,var(--c1) var(--distance),var(--c2) calc(var(--distance) + 15%),var(--c2) calc(var(--distance) + 25%),var(--c1) calc(var(--distance) + 40%));
+      background-image:linear-gradient(135deg,var(--c1) var(--distance),var(--c2) calc(var(--distance) + 15%),var(--c2) calc(var(--distance) + 25%),var(--c1) calc(var(--distance) + 40%));
+      background-image:linear-gradient(135deg,var(--c1) var(--distance),var(--c2) calc(var(--distance) + 15%),var(--c2) calc(var(--distance) + 25%),var(--c1) calc(var(--distance) + 40%));
       -webkit-animation: 1.3s move-forward linear infinite normal;
       animation: 1.3s move-forward linear infinite normal;
     }
@@ -1247,8 +1247,8 @@ button.swap_btn p{
 .coins-lists .coins-list.dummy .coin-details span,
 .coins-lists .coins-list.dummy .coin-details p{
   flex-shrink:0;
-  --c1 : #777;
-  --c2 : #888;
+  --c1 : #444;
+  --c2 : #555;
   position: relative;
   display: block;
   width: 100px;
@@ -1258,9 +1258,9 @@ button.swap_btn p{
   background-image: linear-gradient(135deg,var(--c1), var(--c2));
   @supports (background:paint(something)){
     background-image:-webkit-gradient(linear,left top, right top,from(var(--c1)),color-stop(var(--c2)),color-stop(var(--c2)),to(var(--c1)));
-    background-image:-o-linear-gradient(left,var(--c1) var(--distance),var(--c2) calc(var(--distance) + 5%),var(--c2) calc(var(--distance) + 10%),var(--c1) calc(var(--distance) + 15%));
-    background-image:linear-gradient(135deg,var(--c1) var(--distance),var(--c2) calc(var(--distance) + 5%),var(--c2) calc(var(--distance) + 10%),var(--c1) calc(var(--distance) + 15%));
-    background-image:linear-gradient(135deg,var(--c1) var(--distance),var(--c2) calc(var(--distance) + 5%),var(--c2) calc(var(--distance) + 10%),var(--c1) calc(var(--distance) + 15%));
+    background-image:-o-linear-gradient(left,var(--c1) var(--distance),var(--c2) calc(var(--distance) + 15%),var(--c2) calc(var(--distance) + 25%),var(--c1) calc(var(--distance) + 40%));
+    background-image:linear-gradient(135deg,var(--c1) var(--distance),var(--c2) calc(var(--distance) + 15%),var(--c2) calc(var(--distance) + 25%),var(--c1) calc(var(--distance) + 40%));
+    background-image:linear-gradient(135deg,var(--c1) var(--distance),var(--c2) calc(var(--distance) + 15%),var(--c2) calc(var(--distance) + 25%),var(--c1) calc(var(--distance) + 40%));
     -webkit-animation: 1.3s move-forward linear infinite normal;
     animation: 1.3s move-forward linear infinite normal;
   }
