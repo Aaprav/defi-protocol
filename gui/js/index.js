@@ -1,5 +1,5 @@
 
-  const web3 = new Web3('http://192.168.29.14/:7545');
+  const web3 = new Web3('http://192.168.29.14:7545');
 
   // let allTokens = [
   //   {symbol:"ETH",name:"Ether",decimals:18,img:"./assets/coins/eth.png",address:"-",hot:true},
