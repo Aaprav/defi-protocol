@@ -59,14 +59,20 @@
         v = Math.ceil(v * (10 ** d)) / (10 ** d);
        return v.toLocaleString(undefined, { minimumFractionDigits: d });
       }
-      function floor(a, b) {
+      function floor(a, b,max=false) {
         let [v,d] = calculate(a, b)
         v = Math.floor(v * (10 ** d)) / (10 ** d);
+        if(max){
+          return v.toLocaleString(undefined, { maximumFractionDigits: d });
+        }
        return v.toLocaleString(undefined, { minimumFractionDigits: d });
       }
-      function ceil(a, b) {
+      function ceil(a, b,max=false) {
         let [v,d] = calculate(a, b)
         v = Math.ceil(v * (10 ** d)) / (10 ** d);
+        if(max){
+          return v.toLocaleString(undefined, { maximumFractionDigits: d });
+        }
        return v.toLocaleString(undefined, { minimumFractionDigits: d });
       }
       function real(v, d) {

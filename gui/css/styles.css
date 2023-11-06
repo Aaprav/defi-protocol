@@ -599,7 +599,7 @@ input#theme-toggle-input:checked + .theme-toggle svg.moon {
     display: block;
     background: var(--base-light);
     border-radius: 15px;
-    padding: 10px 20px;
+    padding: 18px 20px;
     margin: 0;
     &:last-child{
       margin-top: 4px;
@@ -611,14 +611,31 @@ input#theme-toggle-input:checked + .theme-toggle svg.moon {
 
   .swap_wrapper .swap_input_area .swap_input_area_text{
     position: relative;
-    display: block;
-    font: 400 15px/22px 'Gabarito', sans-serif;
+    display: flex;
+    flex-direction:row;
+    justify-content:space-between;
+    align-items:center;
     margin: 0 0 5px 0;
     color: var(--text-col-4);
+  }
+  .swap_wrapper .swap_input_area .swap_input_area_text p{
+    position: relative;
+    display: flex;
+    flex-direction:row;
+    justify-content:space-between;
+    align-items:center;
+    font: 400 15px/22px 'Gabarito', sans-serif;
+    color: var(--text-col-4);
+    margin : 0;
+  }
+  .swap_wrapper .swap_input_area .swap_input_area_text p span{
+    position: relative;
+    display: block;
+    color: var(--text-col-3);
+    margin: 0 0 0 5px;
     cursor: pointer;
-    &:last-child{
-      margin: 5px 0 0 0;
-      cursor: text;
+    &:hover{
+      color: var(--text-col-2);
     }
   }
 

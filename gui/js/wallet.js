@@ -4,7 +4,7 @@
   const Wallet = {
     address:"",
     balance:0,
-    chainId:'0x1',// '0x539'
+    chainId:'0x539',// '0x539'
 
     connectWalletGui : () =>{
       if(Wallet.address){
