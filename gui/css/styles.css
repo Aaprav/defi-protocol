@@ -785,7 +785,7 @@ button.swap_btn p{
 
   .swap_info{
     position : relative;
-    display : block;
+    display : none;
     background: var(--base-light);
     border-radius: 15px;
     padding: 0 20px;
@@ -803,12 +803,24 @@ button.swap_btn p{
   }
 
   .swap_info .swap_info_title p{
+    position: relative;
+    display: flex;
+    flex-direction:row;
+    justify-content:space-between;
+    align-items:center;
+    margin : 0;
+    flex-shrink : 0;
+  }
+
+  .swap_info .swap_info_title p span{
     position : relative;
     display : block;
     margin : 0;
     font: 400 16px/18px 'Gabarito', sans-serif;
     color : var(--text-col-3);
-    flex-shrink : 0;
+    &:last-child{
+      margin-left: 5px;
+    }
   }
   .swap_info .swap_info_title button{
     position : relative;

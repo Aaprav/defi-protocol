@@ -47,7 +47,7 @@
   const updatebalance = async() =>{
     try {
       Swap.balance = 0;
-      DOM_SWAP_INPUT.children[0].children[1].children[0].innerHTML = 0;
+      DOM_BALANCE.innerHTML = 0;
       if (!Wallet.address || !Swap.input) return;
 
       let _bal = await new Promise(async(resolve,reject)=>{
@@ -65,10 +65,10 @@
       })
       Swap.balance = Helper.floor(_bal);
       let _decimals = allTokens.find(i=>i.address == Swap.input).decimals || 18;
-      DOM_SWAP_INPUT.children[0].children[1].children[0].innerHTML = Helper.pretty.floor(Swap.balance / (10 ** _decimals),3,true);
+      DOM_BALANCE.innerHTML = Helper.pretty.floor(Swap.balance / (10 ** _decimals),3,true);
     } catch (e) {
       Swap.balance = 0;
-      DOM_SWAP_INPUT.children[0].children[1].children[0].innerHTML = 0;
+      DOM_BALANCE.innerHTML = 0;
     }
   }
 
@@ -78,9 +78,16 @@
     let val = e.target.value;
     Swap.input_value = Helper.floor(val);
     this.value = Helper.sanitize(val);
-    DOM_OUTPUT_VALUE.value = "";
-    output_value = 0;
     Swap.mode = "sell";
+
+    if(Swap.output_value) {
+      DOM_OUTPUT_VALUE.value = "";
+      Swap.output_value = 0;
+    }
+
+    let {symbol} = allTokens.find(i=>i.address == Swap.input);
+    DOM_SWAP_INFO.children[1].children[3].children[1].innerHTML = `${Helper.pretty.ceil(Swap.input_value * 0.0015,4,true)} ${symbol}`;
+
     // TODO: output calculate
   });
   DOM_OUTPUT_VALUE.addEventListener("input", function(e) {
@@ -88,9 +95,11 @@
     let val = e.target.value;
     Swap.output_value = Helper.floor(val);
     this.value = Helper.sanitize(val);
-    DOM_INPUT_VALUE.value = "";
-    input_value = 0;
     Swap.mode = "buy";
+    if (Swap.input_value) {
+      DOM_INPUT_VALUE.value = "";
+      Swap.input_value = 0;
+    }
     // TODO: input calculate
   });
 
@@ -105,14 +114,22 @@
     }
 
     value = parseFloat(value);
+    let _info = DOM_SWAP_INFO.children[1].children[1].children[1];
+    if (_info.getAttribute("style")) {
+      _info.removeAttribute("style")
+    }
+
     if(value > 0 && value <= 200){
       _parentElement.style.borderColor  = "#0ABF30";
     }else if (value > 200) {
       _parentElement.style.borderColor  = "#E9BD0C";
+      _info.style.color  = "#E9BD0C";
     }else if (value < 0) {
       _parentElement.style.borderColor  = "#E24D4C";
+      _info.style.color  = "#E24D4C";
     }
     Swap.slippage = value;
+    _info.innerHTML = `${value >=0?value:0.5} %`;
   });
 
   DOM_DEADLINE_INPUT.addEventListener("input", function(e) {
@@ -126,14 +143,24 @@
     }
 
     value = parseFloat(value);
+
+    let _info = DOM_SWAP_INFO.children[1].children[2].children[1];
+    if (_info.getAttribute("style")) {
+      _info.removeAttribute("style")
+    }
+
     if(value > 0 && value <= 1440){
       _parentElement.style.borderColor  = "#0ABF30";
     }else if (value > 1440) {
       _parentElement.style.borderColor  = "#E9BD0C";
+      _info.style.color  = "#E9BD0C";
     }else if (value < 0) {
       _parentElement.style.borderColor  = "#E24D4C";
+      _info.style.color  = "#E24D4C";
+
     }
     Swap.deadline = value;
+    _info.innerHTML = `${value >=0?value:10} minutes`;
   });
 
 
@@ -203,6 +230,22 @@
     }
   }
 
+  const renderSwapInfo = () =>{
+    if (Swap.input && Swap.output) {
+      DOM_SWAP_INFO.style.display = "block";
+      let {symbol:symbolA} = allTokens.find(i=>i.address == Swap.input);
+      let {symbol:symbolB} = allTokens.find(i=>i.address == Swap.output);
+
+      DOM_SWAP_INFO.children[0].children[0].children[1].innerHTML = `${symbolA} per ${symbolB}`;
+
+      DOM_SWAP_INFO.children[1].children[1].children[1].innerHTML = `${Swap.slippage || 0.5} %`;
+      DOM_SWAP_INFO.children[1].children[2].children[1].innerHTML = `${Swap.deadline || 10} minutes`;
+      DOM_SWAP_INFO.children[1].children[3].children[1].innerHTML = `${Helper.pretty.ceil(Swap.input_value * 0.0015,4,true)} ${symbolA}`;
+    }else {
+      DOM_SWAP_INFO.style.display = "none";
+    }
+  }
+
 
   const renderSwitch = () =>{
     if(!Swap.input ){
@@ -218,7 +261,18 @@
       let _t = allTokens.find(i=>i.address == Swap.output);
       DOM_OUTPUT_SWITCH.children[0].innerHTML = `<div class="coin_list_select_inner"><img src=${_t.img}><p>${_t.symbol}</p></div>`;
     }
+
+    renderSwapInfo()
   }
+
+  DOM_BALANCE.addEventListener("click", function(e) {
+    if (!Swap.balance) return;
+    let _decimals = allTokens.find(i=>i.address == Swap.input).decimals || 18;
+    let _val = Helper.floor(Swap.balance/(10 ** _decimals),3);
+    if (_val <= 0.001) return;
+    Swap.input_value = _val;
+    DOM_INPUT_VALUE.value = _val;
+  });
 
 
   DOM_INPUT_SWITCH.addEventListener("click", function(e) {

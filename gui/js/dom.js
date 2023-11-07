@@ -12,6 +12,7 @@ const DOM_SLIPPAGE_INPUT = document.getElementById("input-slippage");
 const DOM_DEADLINE_INPUT = document.getElementById("input-deadline");
 
 const DOM_SWAP_INPUT = document.getElementById("swap-input");
+const DOM_BALANCE = DOM_SWAP_INPUT.children[0].children[1].children[0];
 const DOM_INPUT_VALUE = DOM_SWAP_INPUT.children[1].children[0];
 const DOM_INPUT_SWITCH = DOM_SWAP_INPUT.children[1].children[1];
 const DOM_INPUT_TEXT = DOM_SWAP_INPUT.children[2];

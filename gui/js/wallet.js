@@ -69,6 +69,7 @@
       Wallet.isBtnClicked = true;
 
       if (typeof window.ethereum === 'undefined') {
+        Wallet.isBtnClicked = false;
         return setToastAlert('Wallet is not installed!',"error");
       }
 
